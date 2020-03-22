@@ -1,0 +1,50 @@
+{
+    "name": "hr-services/pim",
+    "description": "HR Services PIM Package.",
+    "keywords": [
+        "hr-services",
+        "package",
+        "pim"
+    ],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Bertrand Kintanar",
+            "email": "bertrand.kintanar@gmail.com",
+            "role": "Creator & Designer"
+        }
+    ],
+    "support": {
+        "issues": "https://gitlab.com/hr-services/pim/issues",
+        "source": "https://gitlab.com/hr-services/pim"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../auth"
+        },
+        {
+            "type": "path",
+            "url": "../core"
+        }
+    ],
+    "require": {
+        "hr-services/auth": "dev-master",
+        "hr-services/core": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "HRServices\\PIM\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HRServices\\PIM\\Providers\\PIMServiceProvider",
+                "HRServices\\PIM\\Providers\\RouteServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
