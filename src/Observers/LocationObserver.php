@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\Location;
+use HRis\PIM\Eloquent\Location;
 
 class LocationObserver
 {
     /**
      * Handle the Location "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Location  $location
+     * @param  \HRis\PIM\Eloquent\Location  $location
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class LocationObserver
     /**
      * Handle the Location "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Location  $location
+     * @param  \HRis\PIM\Eloquent\Location  $location
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class LocationObserver
     /**
      * Handle the Location "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Location  $location
+     * @param  \HRis\PIM\Eloquent\Location  $location
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class LocationObserver
     /**
      * Handle the Location "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Location  $location
+     * @param  \HRis\PIM\Eloquent\Location  $location
      *
      * @return void
      */

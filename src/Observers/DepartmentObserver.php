@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\Department;
+use HRis\PIM\Eloquent\Department;
 
 class DepartmentObserver
 {
     /**
      * Handle the Department "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Department  $department
+     * @param  \HRis\PIM\Eloquent\Department  $department
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class DepartmentObserver
     /**
      * Handle the Department "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Department  $department
+     * @param  \HRis\PIM\Eloquent\Department  $department
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class DepartmentObserver
     /**
      * Handle the Department "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Department  $department
+     * @param  \HRis\PIM\Eloquent\Department  $department
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class DepartmentObserver
     /**
      * Handle the Department "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Department  $department
+     * @param  \HRis\PIM\Eloquent\Department  $department
      *
      * @return void
      */

@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\MaritalStatus;
+use HRis\PIM\Eloquent\MaritalStatus;
 
 class MaritalStatusObserver
 {
     /**
      * Handle the MaritalStatus "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\MaritalStatus  $maritalStatus
+     * @param  \HRis\PIM\Eloquent\MaritalStatus  $maritalStatus
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class MaritalStatusObserver
     /**
      * Handle the MaritalStatus "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\MaritalStatus  $maritalStatus
+     * @param  \HRis\PIM\Eloquent\MaritalStatus  $maritalStatus
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class MaritalStatusObserver
     /**
      * Handle the MaritalStatus "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\MaritalStatus  $maritalStatus
+     * @param  \HRis\PIM\Eloquent\MaritalStatus  $maritalStatus
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class MaritalStatusObserver
     /**
      * Handle the MaritalStatus "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\MaritalStatus  $maritalStatus
+     * @param  \HRis\PIM\Eloquent\MaritalStatus  $maritalStatus
      *
      * @return void
      */

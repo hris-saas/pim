@@ -1,8 +1,8 @@
 {
-    "name": "hr-services/pim",
-    "description": "HR Services PIM Package.",
+    "name": "hris-saas/pim",
+    "description": "HRis SaaS PIM Package.",
     "keywords": [
-        "hr-services",
+        "hris-saas",
         "package",
         "pim"
     ],
@@ -15,8 +15,8 @@
         }
     ],
     "support": {
-        "issues": "https://gitlab.com/hr-services/pim/issues",
-        "source": "https://gitlab.com/hr-services/pim"
+        "issues": "https://gitlab.com/hris-saas/bugs/issues",
+        "source": "https://gitlab.com/hris-saas/pim"
     },
     "repositories": [
         {
@@ -29,19 +29,19 @@
         }
     ],
     "require": {
-        "hr-services/auth": "dev-master",
-        "hr-services/core": "dev-master"
+        "hris-saas/auth": "*",
+        "hris-saas/core": "*"
     },
     "autoload": {
         "psr-4": {
-            "HRServices\\PIM\\": "src"
+            "HRis\\PIM\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "HRServices\\PIM\\Providers\\PIMServiceProvider",
-                "HRServices\\PIM\\Providers\\RouteServiceProvider"
+                "HRis\\PIM\\Providers\\PIMServiceProvider",
+                "HRis\\PIM\\Providers\\RouteServiceProvider"
             ]
         }
     },

@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\PayPeriod;
+use HRis\PIM\Eloquent\PayPeriod;
 
 class PayPeriodObserver
 {
     /**
      * Handle the PayPeriod "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayPeriod  $payPeriod
+     * @param  \HRis\PIM\Eloquent\PayPeriod  $payPeriod
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class PayPeriodObserver
     /**
      * Handle the PayPeriod "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayPeriod  $payPeriod
+     * @param  \HRis\PIM\Eloquent\PayPeriod  $payPeriod
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class PayPeriodObserver
     /**
      * Handle the PayPeriod "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayPeriod  $payPeriod
+     * @param  \HRis\PIM\Eloquent\PayPeriod  $payPeriod
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class PayPeriodObserver
     /**
      * Handle the PayPeriod "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayPeriod  $payPeriod
+     * @param  \HRis\PIM\Eloquent\PayPeriod  $payPeriod
      *
      * @return void
      */

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use HRServices\PIM\Http\Controllers\EmployeeFieldController;
+use HRis\PIM\Http\Controllers\EmployeeFieldController;
 
 // guest
 Route::group(['middleware' => 'guest:api'], function () {

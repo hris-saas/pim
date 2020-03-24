@@ -1,6 +1,6 @@
 <?php
 
-namespace HRServices\PIM\Validators;
+namespace HRis\PIM\Validators;
 
 class Validator
 {

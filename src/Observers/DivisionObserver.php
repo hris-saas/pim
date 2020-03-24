@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\Division;
+use HRis\PIM\Eloquent\Division;
 
 class DivisionObserver
 {
     /**
      * Handle the Division "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Division  $division
+     * @param  \HRis\PIM\Eloquent\Division  $division
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class DivisionObserver
     /**
      * Handle the Division "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Division  $division
+     * @param  \HRis\PIM\Eloquent\Division  $division
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class DivisionObserver
     /**
      * Handle the Division "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Division  $division
+     * @param  \HRis\PIM\Eloquent\Division  $division
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class DivisionObserver
     /**
      * Handle the Division "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\Division  $division
+     * @param  \HRis\PIM\Eloquent\Division  $division
      *
      * @return void
      */

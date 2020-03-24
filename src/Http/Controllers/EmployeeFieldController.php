@@ -1,12 +1,12 @@
 <?php
 
-namespace HRServices\PIM\Http\Controllers;
+namespace HRis\PIM\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use HRServices\PIM\Http\Resources\EmployeeField as Resource;
+use HRis\PIM\Http\Resources\EmployeeField as Resource;
+use HRis\PIM\Http\Requests\EmployeeFieldRequest as Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use HRServices\PIM\Http\Requests\EmployeeFieldRequest as Request;
 
 class EmployeeFieldController extends Controller
 {
@@ -43,7 +43,7 @@ class EmployeeFieldController extends Controller
      *
      * @param Request $request
      *
-     * @return \HRServices\PIM\Http\Resources\EmployeeField
+     * @return \HRis\PIM\Http\Resources\EmployeeField
      */
     public function store(Request $request): Resource
     {
@@ -59,7 +59,7 @@ class EmployeeFieldController extends Controller
      *
      * @param Request $request
      *
-     * @return \HRServices\PIM\Http\Resources\EmployeeField
+     * @return \HRis\PIM\Http\Resources\EmployeeField
      */
     public function update(Request $request): Resource
     {

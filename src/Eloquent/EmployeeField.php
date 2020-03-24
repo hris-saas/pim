@@ -1,8 +1,8 @@
 <?php
 
-namespace HRServices\PIM\Eloquent;
+namespace HRis\PIM\Eloquent;
 
-use HRServices\Core\Traits\HasClass;
+use HRis\Core\Traits\HasClass;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

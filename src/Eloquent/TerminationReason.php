@@ -1,6 +1,6 @@
 <?php
 
-namespace HRServices\PIM\Eloquent;
+namespace HRis\PIM\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\PayType;
+use HRis\PIM\Eloquent\PayType;
 
 class PayTypeObserver
 {
     /**
      * Handle the PayType "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayType  $payType
+     * @param  \HRis\PIM\Eloquent\PayType  $payType
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class PayTypeObserver
     /**
      * Handle the PayType "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayType  $payType
+     * @param  \HRis\PIM\Eloquent\PayType  $payType
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class PayTypeObserver
     /**
      * Handle the PayType "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayType  $payType
+     * @param  \HRis\PIM\Eloquent\PayType  $payType
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class PayTypeObserver
     /**
      * Handle the PayType "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\PayType  $payType
+     * @param  \HRis\PIM\Eloquent\PayType  $payType
      *
      * @return void
      */

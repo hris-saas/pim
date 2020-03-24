@@ -1,9 +1,9 @@
 <?php
 
-namespace HRServices\PIM\Validators;
+namespace HRis\PIM\Validators;
 
 use Illuminate\Support\Facades\Validator;
-use HRServices\Core\Validators\ValidatorInterface;
+use HRis\Core\Validators\ValidatorInterface;
 
 class UniqueFieldValidator implements ValidatorInterface
 {

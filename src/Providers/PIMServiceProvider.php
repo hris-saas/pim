@@ -1,24 +1,24 @@
 <?php
 
-namespace HRServices\PIM\Providers;
+namespace HRis\PIM\Providers;
 
-use HRServices\PIM\Eloquent\PayType;
-use HRServices\PIM\Eloquent\Division;
-use HRServices\PIM\Eloquent\JobTitle;
-use HRServices\PIM\Eloquent\Location;
-use HRServices\PIM\Eloquent\PayPeriod;
-use HRServices\PIM\Eloquent\Department;
-use HRServices\PIM\Validators\Validator;
-use HRServices\PIM\Eloquent\MaritalStatus;
-use HRServices\PIM\Observers\PayTypeObserver;
-use HRServices\PIM\Eloquent\TerminationReason;
-use HRServices\PIM\Observers\DivisionObserver;
-use HRServices\PIM\Observers\JobTitleObserver;
-use HRServices\PIM\Observers\LocationObserver;
-use HRServices\PIM\Observers\PayPeriodObserver;
-use HRServices\PIM\Observers\DepartmentObserver;
-use HRServices\PIM\Observers\MaritalStatusObserver;
-use HRServices\PIM\Observers\TerminationReasonObserver;
+use HRis\PIM\Eloquent\PayType;
+use HRis\PIM\Eloquent\Division;
+use HRis\PIM\Eloquent\JobTitle;
+use HRis\PIM\Eloquent\Location;
+use HRis\PIM\Eloquent\PayPeriod;
+use HRis\PIM\Eloquent\Department;
+use HRis\PIM\Validators\Validator;
+use HRis\PIM\Eloquent\MaritalStatus;
+use HRis\PIM\Observers\PayTypeObserver;
+use HRis\PIM\Eloquent\TerminationReason;
+use HRis\PIM\Observers\DivisionObserver;
+use HRis\PIM\Observers\JobTitleObserver;
+use HRis\PIM\Observers\LocationObserver;
+use HRis\PIM\Observers\PayPeriodObserver;
+use HRis\PIM\Observers\DepartmentObserver;
+use HRis\PIM\Observers\MaritalStatusObserver;
+use HRis\PIM\Observers\TerminationReasonObserver;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class PIMServiceProvider extends BaseServiceProvider
@@ -35,7 +35,7 @@ class PIMServiceProvider extends BaseServiceProvider
 
             $this->publishes([
                 __DIR__.'/../../assets/migrations' => database_path('migrations'),
-            ], 'hr-services::pim-migrations');
+            ], 'hris-saas::pim-migrations');
         }
 
         $this->registerEloquentObservers();

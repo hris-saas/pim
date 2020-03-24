@@ -1,6 +1,6 @@
 <?php
 
-namespace HRServices\PIM\Http\Resources;
+namespace HRis\PIM\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

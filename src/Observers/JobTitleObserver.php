@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\JobTitle;
+use HRis\PIM\Eloquent\JobTitle;
 
 class JobTitleObserver
 {
     /**
      * Handle the JobTitle "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\JobTitle  $jobTitle
+     * @param  \HRis\PIM\Eloquent\JobTitle  $jobTitle
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class JobTitleObserver
     /**
      * Handle the JobTitle "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\JobTitle  $jobTitle
+     * @param  \HRis\PIM\Eloquent\JobTitle  $jobTitle
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class JobTitleObserver
     /**
      * Handle the JobTitle "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\JobTitle  $jobTitle
+     * @param  \HRis\PIM\Eloquent\JobTitle  $jobTitle
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class JobTitleObserver
     /**
      * Handle the JobTitle "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\JobTitle  $jobTitle
+     * @param  \HRis\PIM\Eloquent\JobTitle  $jobTitle
      *
      * @return void
      */

@@ -1,9 +1,9 @@
 <?php
 
-namespace HRServices\PIM\Http\Requests;
+namespace HRis\PIM\Http\Requests;
 
-use HRServices\PIM\Eloquent\EmployeeField;
-use HRServices\Auth\Http\Requests\BaseRequest;
+use HRis\PIM\Eloquent\EmployeeField;
+use HRis\Auth\Http\Requests\BaseRequest;
 
 class EmployeeFieldRequest extends BaseRequest
 {

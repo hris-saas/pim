@@ -1,9 +1,10 @@
 <?php
 
-namespace HRServices\PIM\Http\Controllers;
+namespace HRis\PIM\Http\Controllers;
 
-use HRServices\Core\Http\Controllers\Controller as BaseController;
+use HRis\Core\Http\Controllers\Controller as BaseController;
 
 class Controller extends BaseController
 {
+    //
 }

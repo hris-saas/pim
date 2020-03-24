@@ -1,15 +1,15 @@
 <?php
 
-namespace HRServices\PIM\Observers;
+namespace HRis\PIM\Observers;
 
-use HRServices\PIM\Eloquent\TerminationReason;
+use HRis\PIM\Eloquent\TerminationReason;
 
 class TerminationReasonObserver
 {
     /**
      * Handle the TerminationReason "created" event.
      *
-     * @param  \HRServices\PIM\Eloquent\TerminationReason  $terminationReason
+     * @param  \HRis\PIM\Eloquent\TerminationReason  $terminationReason
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class TerminationReasonObserver
     /**
      * Handle the TerminationReason "updated" event.
      *
-     * @param  \HRServices\PIM\Eloquent\TerminationReason  $terminationReason
+     * @param  \HRis\PIM\Eloquent\TerminationReason  $terminationReason
      *
      * @return void
      */
@@ -37,7 +37,7 @@ class TerminationReasonObserver
     /**
      * Handle the TerminationReason "deleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\TerminationReason  $terminationReason
+     * @param  \HRis\PIM\Eloquent\TerminationReason  $terminationReason
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class TerminationReasonObserver
     /**
      * Handle the TerminationReason "forceDeleted" event.
      *
-     * @param  \HRServices\PIM\Eloquent\TerminationReason  $terminationReason
+     * @param  \HRis\PIM\Eloquent\TerminationReason  $terminationReason
      *
      * @return void
      */
