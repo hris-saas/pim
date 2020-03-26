@@ -19,9 +19,15 @@ class EmployeeFieldController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $collection = (new $request->model_type)::orderBy('sort_order')->paginate($this->perPage);
+        $collection = (new $request->model_type)::orderBy('sort_order');
 
-        return Resource::collection($collection);
+        if ($this->perPage === 'all') {
+            $collection = $collection->get();
+
+            return Resource::collection($collection);
+        }
+        
+        return Resource::collection($collection->paginate($this->perPage));
     }
 
     /**
@@ -43,7 +49,7 @@ class EmployeeFieldController extends Controller
      *
      * @param Request $request
      *
-     * @return \HRis\PIM\Http\Resources\EmployeeField
+     * @return Resource
      */
     public function store(Request $request): Resource
     {
@@ -59,7 +65,7 @@ class EmployeeFieldController extends Controller
      *
      * @param Request $request
      *
-     * @return \HRis\PIM\Http\Resources\EmployeeField
+     * @return Resource
      */
     public function update(Request $request): Resource
     {

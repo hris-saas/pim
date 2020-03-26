@@ -2,14 +2,12 @@
 
 namespace HRis\PIM\Eloquent;
 
-use Illuminate\Database\Eloquent\Model;
-
-class TerminationReason extends Model
+class TerminationReason extends EmployeeField
 {
     /**
-     * The attributes that are mass assignable.
+     * The model's attributes.
      *
      * @var array
      */
-    protected $fillable = ['id', 'sort_order', 'name', 'created_at', 'updated_at', 'deleted_at'];
+    protected $attributes = ['class' => self::class];
 }

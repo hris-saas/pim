@@ -9,7 +9,7 @@ class RouteServiceProvider extends ServiceProvider
 {
     protected $middleware = [];
 
-    protected $routeFiles = ['employee-fields'];
+    protected $routeFiles = ['employee-fields', 'employees'];
     
     /**
      * This namespace is applied to your controller routes.

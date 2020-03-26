@@ -6,6 +6,7 @@ class Validator
 {
     private static $validators = [
         UniqueFieldValidator::class,
+        ExistsFieldValidator::class,
     ];
 
     public static function registerValidators(): void
