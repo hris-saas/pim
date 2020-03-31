@@ -19,6 +19,7 @@ class EmployeeField extends Model
         'divisions'           => Division::class,
         'pay-periods'         => PayPeriod::class,
         'pay-types'           => PayType::class,
+        'employment-statuses' => EmploymentStatus::class,
     ];
     
     /**

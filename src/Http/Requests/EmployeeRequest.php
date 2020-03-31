@@ -12,11 +12,11 @@ class EmployeeRequest extends BaseRequest
     protected $rules = [
         'GET' => [],
         'POST' => [
-            'department_id' => ['exists_field:'.Department::class.',id'],
-            'location_id' => ['exists_field:'.Location::class.',id'],
-            'marital_status_id' => ['exists_field:'.Location::class.',id'],
+            'department_id'         => ['exists_field:'.Department::class.',id'],
+            'location_id'           => ['exists_field:'.Location::class.',id'],
+            'marital_status_id'     => ['exists_field:'.Location::class.',id'],
             'termination_reason_id' => ['exists_field:'.TerminationReason::class.',id'],
-            'employee_no' => ['unique:employees,employee_no'],
+            'employee_no'           => ['unique:employees,employee_no'],
         ],
         'PATCH' => [
             'department_id' => ['exists_field:'.Department::class.',id'],

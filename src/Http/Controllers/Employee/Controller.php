@@ -1,15 +1,16 @@
 <?php
 
-namespace HRis\PIM\Http\Controllers;
+namespace HRis\PIM\Http\Controllers\Employee;
 
 use HRis\PIM\Eloquent\Employee;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use HRis\PIM\Http\Resources\Employee as Resource;
 use HRis\PIM\Http\Requests\EmployeeRequest as Request;
+use HRis\PIM\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class EmployeeController extends Controller
+class Controller extends BaseController
 {
     /**
      * Display a listing of the resource.

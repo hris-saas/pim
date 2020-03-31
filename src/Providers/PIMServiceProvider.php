@@ -10,6 +10,7 @@ use HRis\PIM\Eloquent\PayPeriod;
 use HRis\PIM\Eloquent\Department;
 use HRis\PIM\Validators\Validator;
 use HRis\PIM\Eloquent\MaritalStatus;
+use HRis\PIM\Eloquent\EmploymentStatus;
 use HRis\PIM\Observers\PayTypeObserver;
 use HRis\PIM\Eloquent\TerminationReason;
 use HRis\PIM\Observers\DivisionObserver;
@@ -18,6 +19,7 @@ use HRis\PIM\Observers\LocationObserver;
 use HRis\PIM\Observers\PayPeriodObserver;
 use HRis\PIM\Observers\DepartmentObserver;
 use HRis\PIM\Observers\MaritalStatusObserver;
+use HRis\PIM\Observers\EmploymentStatusObserver;
 use HRis\PIM\Observers\TerminationReasonObserver;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -68,6 +70,7 @@ class PIMServiceProvider extends BaseServiceProvider
         Division::observe(DivisionObserver::class);
         PayPeriod::observe(PayPeriodObserver::class);
         PayType::observe(PayTypeObserver::class);
+        EmploymentStatus::observe(EmploymentStatusObserver::class);
     }
 
     /**

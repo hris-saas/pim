@@ -4,6 +4,7 @@ namespace HRis\PIM\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
@@ -24,7 +25,7 @@ class Employee extends Model
      */
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'department_id');
+        return $this->belongsTo(Department::class);
     }
 
     /**
@@ -34,7 +35,7 @@ class Employee extends Model
      */
     public function location(): BelongsTo
     {
-        return $this->belongsTo(Location::class, 'location_id');
+        return $this->belongsTo(Location::class);
     }
 
     /**
@@ -44,7 +45,7 @@ class Employee extends Model
      */
     public function maritalStatus(): BelongsTo
     {
-        return $this->belongsTo(MaritalStatus::class, 'marital_status_id');
+        return $this->belongsTo(MaritalStatus::class);
     }
 
     /**
@@ -54,6 +55,30 @@ class Employee extends Model
      */
     public function terminationReason(): BelongsTo
     {
-        return $this->belongsTo(TerminationReason::class, 'termination_reason_id');
+        return $this->belongsTo(TerminationReason::class);
+    }
+
+    /**
+     * Addresses that this model has.
+     */
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    /**
+     * EmploymentStatuses that this model has.
+     */
+    public function employmentStatuses(): HasMany
+    {
+        return $this->hasMany(EmployeeEmploymentStatus::class);
+    }
+
+    /**
+     * Jobs that this model has.
+     */
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class);
     }
 }

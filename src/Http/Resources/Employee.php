@@ -26,6 +26,7 @@ class Employee extends JsonResource
             'date_of_birth'      => $this->date_of_birth,
             'identity_no'        => $this->identity_no,
             'gender'             => $this->gender,
+            'addresses'          => Address::collection($this->addresses),
             'department'         => $this->when($this->department, optional($this->department)->name),
             'location'           => $this->when($this->location, optional($this->location)->name),
             'marital_status'     => $this->when($this->maritalStatus, optional($this->maritalStatus)->name),

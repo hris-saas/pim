@@ -36,6 +36,7 @@ class CreateEmployeesTable extends Migration
             $table->string('work_email')->nullable();
             $table->string('personal_email')->nullable();
             $table->string('avatar')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->date('started_at')->nullable();
             $table->timestamp('termination_performed_at')->nullable();
             $table->timestamp('terminated_at')->nullable();
