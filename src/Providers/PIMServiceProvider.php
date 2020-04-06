@@ -9,6 +9,7 @@ use HRis\PIM\Eloquent\Location;
 use HRis\PIM\Eloquent\PayPeriod;
 use HRis\PIM\Eloquent\Department;
 use HRis\PIM\Validators\Validator;
+use HRis\PIM\Eloquent\Relationship;
 use HRis\PIM\Eloquent\MaritalStatus;
 use HRis\PIM\Eloquent\EmploymentStatus;
 use HRis\PIM\Observers\PayTypeObserver;
@@ -18,6 +19,7 @@ use HRis\PIM\Observers\JobTitleObserver;
 use HRis\PIM\Observers\LocationObserver;
 use HRis\PIM\Observers\PayPeriodObserver;
 use HRis\PIM\Observers\DepartmentObserver;
+use HRis\PIM\Observers\RelationshipObserver;
 use HRis\PIM\Observers\MaritalStatusObserver;
 use HRis\PIM\Observers\EmploymentStatusObserver;
 use HRis\PIM\Observers\TerminationReasonObserver;
@@ -63,14 +65,15 @@ class PIMServiceProvider extends BaseServiceProvider
     protected function registerEloquentObservers(): void
     {
         Department::observe(DepartmentObserver::class);
-        Location::observe(LocationObserver::class);
-        JobTitle::observe(JobTitleObserver::class);
-        MaritalStatus::observe(MaritalStatusObserver::class);
-        TerminationReason::observe(TerminationReasonObserver::class);
         Division::observe(DivisionObserver::class);
+        EmploymentStatus::observe(EmploymentStatusObserver::class);
+        JobTitle::observe(JobTitleObserver::class);
+        Location::observe(LocationObserver::class);
+        MaritalStatus::observe(MaritalStatusObserver::class);
         PayPeriod::observe(PayPeriodObserver::class);
         PayType::observe(PayTypeObserver::class);
-        EmploymentStatus::observe(EmploymentStatusObserver::class);
+        Relationship::observe(RelationshipObserver::class);
+        TerminationReason::observe(TerminationReasonObserver::class);
     }
 
     /**

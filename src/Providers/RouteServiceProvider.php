@@ -2,14 +2,13 @@
 
 namespace HRis\PIM\Providers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
     protected $middleware = [];
-
-    protected $routeFiles = ['employee-fields', 'employees'];
     
     /**
      * This namespace is applied to your controller routes.
@@ -55,12 +54,14 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes(): void
     {
-        foreach ($this->routeFiles as $routeFile) {
+        $routeFiles = collect(File::files(__DIR__.'/../routes/api'))->map->getFilename();
+
+        foreach ($routeFiles as $routeFile) {
             Route::prefix('api')
                 ->middleware(['bindings', 'throttle'])
                 ->as($this->alias)
                 ->namespace($this->namespace)
-                ->group(__DIR__."/../routes/api/{$routeFile}.php");
+                ->group(__DIR__."/../routes/api/{$routeFile}");
         }
     }
 }

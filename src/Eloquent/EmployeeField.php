@@ -12,14 +12,15 @@ class EmployeeField extends Model
 
     public static $fields = [
         'departments'         => Department::class,
-        'locations'           => Location::class,
-        'job-titles'          => JobTitle::class,
-        'marital-statuses'    => MaritalStatus::class,
-        'termination-reasons' => TerminationReason::class,
         'divisions'           => Division::class,
+        'employment-statuses' => EmploymentStatus::class,
+        'job-titles'          => JobTitle::class,
+        'locations'           => Location::class,
+        'marital-statuses'    => MaritalStatus::class,
         'pay-periods'         => PayPeriod::class,
         'pay-types'           => PayType::class,
-        'employment-statuses' => EmploymentStatus::class,
+        'relationships'       => Relationship::class,
+        'termination-reasons' => TerminationReason::class,
     ];
     
     /**

@@ -73,4 +73,11 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('pay-types', [EmployeeFieldController::class, 'store'])->name('pay-type.store');                                                            // postman
     Route::patch('pay-types/{payType}', [EmployeeFieldController::class, 'update'])->name('pay-type.update');                                               // postman
     Route::delete('pay-types/{payType}', [EmployeeFieldController::class, 'destroy'])->name('pay-type.destroy');                                            // postman
+
+    // api/relationships
+    Route::get('relationships', [EmployeeFieldController::class, 'index'])->name('relationship.index');                                                     // postman
+    Route::get('relationships/{relationship}', [EmployeeFieldController::class, 'show'])->name('relationship.show');                                        // postman
+    Route::post('relationships', [EmployeeFieldController::class, 'store'])->name('relationship.store');                                                    // postman
+    Route::patch('relationships/{relationship}', [EmployeeFieldController::class, 'update'])->name('relationship.update');                                  // postman
+    Route::delete('relationships/{relationship}', [EmployeeFieldController::class, 'destroy'])->name('relationship.destroy');                               // postman
 });

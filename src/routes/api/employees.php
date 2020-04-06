@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use HRis\PIM\Http\Controllers\Employee\JobController;
 use HRis\PIM\Http\Controllers\Employee\AddressController;
+use HRis\PIM\Http\Controllers\Employee\EmergencyContactController;
 use HRis\PIM\Http\Controllers\Employee\EmploymentStatusController;
 use HRis\PIM\Http\Controllers\Employee\Controller as EmployeeController;
 
@@ -43,5 +44,12 @@ Route::group(['middleware' => ['auth:api'], 'prefix' => 'employees'], function (
         Route::post('jobs', [JobController::class, 'store'])->name('job.store');                                                                             // postman
         Route::patch('jobs/{job:id}', [JobController::class, 'update'])->name('job.update');                                                                 // postman
         Route::delete('jobs/{job:id}', [JobController::class, 'destroy'])->name('job.destroy');                                                              // postman
+
+        // api/employees/{employee}/emergency-contacts
+        Route::get('emergency-contacts', [EmergencyContactController::class, 'index'])->name('emergency-contact.index');                                     // postman
+        Route::get('emergency-contacts/{emergencyContact:id}', [EmergencyContactController::class, 'show'])->name('emergency-contact.show');                 // postman
+        Route::post('emergency-contacts', [EmergencyContactController::class, 'store'])->name('emergency-contact.store');                                    // postman
+        Route::patch('emergency-contacts/{emergencyContact:id}', [EmergencyContactController::class, 'update'])->name('emergency-contact.update');           // postman
+        Route::delete('emergency-contacts/{emergencyContact:id}', [EmergencyContactController::class, 'destroy'])->name('emergency-contact.destroy');        // postman
     });
 });

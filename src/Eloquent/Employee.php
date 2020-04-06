@@ -81,4 +81,12 @@ class Employee extends Model
     {
         return $this->hasMany(Job::class);
     }
+
+    /**
+     * EmergencyContacts that this model has.
+     */
+    public function emergencyContacts(): HasMany
+    {
+        return $this->hasMany(EmergencyContact::class);
+    }
 }

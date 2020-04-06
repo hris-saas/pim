@@ -5,6 +5,7 @@ namespace HRis\PIM\Eloquent;
 use HRis\Auth\Eloquent\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class EmployeeEmploymentStatus extends Model
 {
@@ -20,7 +21,7 @@ class EmployeeEmploymentStatus extends Model
     /**
      * User this model belongs to.
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -28,7 +29,7 @@ class EmployeeEmploymentStatus extends Model
     /**
      * Employee this model belongs to.
      */
-    public function employee()
+    public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
     }
@@ -36,7 +37,7 @@ class EmployeeEmploymentStatus extends Model
     /**
      * EmployeeStatus this model belongs to.
      */
-    public function employmentStatus()
+    public function employmentStatus(): BelongsTo
     {
         return $this->belongsTo(EmploymentStatus::class);
     }
