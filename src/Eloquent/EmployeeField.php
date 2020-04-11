@@ -3,12 +3,13 @@
 namespace HRis\PIM\Eloquent;
 
 use HRis\Core\Traits\HasClass;
+use HRis\Core\Traits\HasSortOrder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EmployeeField extends Model
 {
-    use HasClass, SoftDeletes;
+    use HasClass, HasSortOrder, SoftDeletes;
 
     public static $fields = [
         'departments'         => Department::class,

@@ -2,27 +2,7 @@
 
 namespace HRis\PIM\Providers;
 
-use HRis\PIM\Eloquent\PayType;
-use HRis\PIM\Eloquent\Division;
-use HRis\PIM\Eloquent\JobTitle;
-use HRis\PIM\Eloquent\Location;
-use HRis\PIM\Eloquent\PayPeriod;
-use HRis\PIM\Eloquent\Department;
 use HRis\PIM\Validators\Validator;
-use HRis\PIM\Eloquent\Relationship;
-use HRis\PIM\Eloquent\MaritalStatus;
-use HRis\PIM\Eloquent\EmploymentStatus;
-use HRis\PIM\Observers\PayTypeObserver;
-use HRis\PIM\Eloquent\TerminationReason;
-use HRis\PIM\Observers\DivisionObserver;
-use HRis\PIM\Observers\JobTitleObserver;
-use HRis\PIM\Observers\LocationObserver;
-use HRis\PIM\Observers\PayPeriodObserver;
-use HRis\PIM\Observers\DepartmentObserver;
-use HRis\PIM\Observers\RelationshipObserver;
-use HRis\PIM\Observers\MaritalStatusObserver;
-use HRis\PIM\Observers\EmploymentStatusObserver;
-use HRis\PIM\Observers\TerminationReasonObserver;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class PIMServiceProvider extends BaseServiceProvider
@@ -42,8 +22,6 @@ class PIMServiceProvider extends BaseServiceProvider
             ], 'hris-saas::pim-migrations');
         }
 
-        $this->registerEloquentObservers();
-
         Validator::registerValidators();
     }
 
@@ -55,25 +33,6 @@ class PIMServiceProvider extends BaseServiceProvider
     protected function registerMigrations(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../../assets/migrations');
-    }
-
-    /**
-     * Register PIM's eloquent observers.
-     *
-     * @return void
-     */
-    protected function registerEloquentObservers(): void
-    {
-        Department::observe(DepartmentObserver::class);
-        Division::observe(DivisionObserver::class);
-        EmploymentStatus::observe(EmploymentStatusObserver::class);
-        JobTitle::observe(JobTitleObserver::class);
-        Location::observe(LocationObserver::class);
-        MaritalStatus::observe(MaritalStatusObserver::class);
-        PayPeriod::observe(PayPeriodObserver::class);
-        PayType::observe(PayTypeObserver::class);
-        Relationship::observe(RelationshipObserver::class);
-        TerminationReason::observe(TerminationReasonObserver::class);
     }
 
     /**
