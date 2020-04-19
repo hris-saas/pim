@@ -2,6 +2,7 @@
 
 namespace HRis\PIM\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Employee extends JsonResource
@@ -31,6 +32,14 @@ class Employee extends JsonResource
             'location'           => $this->when($this->location, optional($this->location)->name),
             'marital_status'     => $this->when($this->maritalStatus, optional($this->maritalStatus)->name),
             'termination_reason' => $this->when($this->terminationReason, optional($this->terminationReason)->name),
+            'work_email'         => $this->work_email,
+            'personal_email'     => $this->personal_email,
+            'work_phone'         => $this->work_phone,
+            'work_phone_ext'     => $this->work_phone_ext,
+            'mobile_phone'       => $this->mobile_phone,
+            'home_phone'         => $this->home_phone,
+            'is_active'          => $this->is_active,
+            'started_at'         => Carbon::parse($this->started_at)->format('F d, Y'),
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
             'deleted_at'         => $this->deleted_at,
