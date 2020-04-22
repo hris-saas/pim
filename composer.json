@@ -32,10 +32,24 @@
         "hris-saas/auth": "*",
         "hris-saas/core": "*"
     },
+    "require-dev": {
+        "fzaninotto/faker": "^1.9.1",
+        "laravel/laravel": "^7.0",
+        "phpunit/phpunit": "^8.0"
+    },
     "autoload": {
         "psr-4": {
             "HRis\\PIM\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HRis\\PIM\\Tests\\UnitTests\\": "tests/unit-tests/",
+            "HRis\\PIM\\Tests\\Eloquents\\": "tests/eloquents/"
+        },
+        "classmap": [
+            "tests/Test.php"
+        ]
     },
     "extra": {
         "laravel": {

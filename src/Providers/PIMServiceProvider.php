@@ -3,6 +3,7 @@
 namespace HRis\PIM\Providers;
 
 use HRis\PIM\Validators\Validator;
+use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class PIMServiceProvider extends BaseServiceProvider
@@ -22,6 +23,8 @@ class PIMServiceProvider extends BaseServiceProvider
             ], 'hris-saas::pim-migrations');
         }
 
+        $this->registerFactories();
+
         Validator::registerValidators();
     }
 
@@ -33,6 +36,16 @@ class PIMServiceProvider extends BaseServiceProvider
     protected function registerMigrations(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../../assets/migrations');
+    }
+
+    /**
+     * Register PIM's factory files.
+     *
+     * @return void
+     */
+    protected function registerFactories(): void
+    {
+        $this->app->make(Factory::class)->load(__DIR__ . '/../../assets/database/factories');
     }
 
     /**
