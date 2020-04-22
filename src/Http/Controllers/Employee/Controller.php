@@ -21,9 +21,11 @@ class Controller extends BaseController
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $employees = Employee::paginate($this->perPage);
-
-        return Resource::collection($employees);
+        if ($this->perPage === 'all') {
+            return Resource::collection(Employee::get());
+        }
+        
+        return Resource::collection(Employee::paginate($this->perPage));
     }
 
     /**

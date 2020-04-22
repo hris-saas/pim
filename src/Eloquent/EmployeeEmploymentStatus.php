@@ -16,7 +16,7 @@ class EmployeeEmploymentStatus extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'user_id', 'employee_id', 'employment_status_id', 'effective_at', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id', 'user_id', 'employee_id', 'employment_status_id', 'effective_at', 'comment', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * User this model belongs to.

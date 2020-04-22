@@ -13,7 +13,7 @@ class EmployeeEmploymentStatusRequest extends BaseRequest
             'employment_status_id' => ['required', 'exists_field:'.EmploymentStatus::class.',id'],
         ],
         'PATCH' => [
-            'employment_status_id' => ['required', 'exists_field:'.EmploymentStatus::class.',id'],
+            'employment_status_id' => ['filled', 'exists_field:'.EmploymentStatus::class.',id'],
         ],
         'DELETE' => [],
     ];
