@@ -4,6 +4,7 @@ namespace HRis\PIM\Http\Requests;
 
 use HRis\PIM\Eloquent\Location;
 use HRis\PIM\Eloquent\Department;
+use HRis\PIM\Eloquent\MaritalStatus;
 use HRis\Auth\Http\Requests\BaseRequest;
 use HRis\PIM\Eloquent\TerminationReason;
 
@@ -14,7 +15,7 @@ class EmployeeRequest extends BaseRequest
         'POST' => [
             'department_id'         => ['exists_field:'.Department::class.',id'],
             'location_id'           => ['exists_field:'.Location::class.',id'],
-            'marital_status_id'     => ['exists_field:'.Location::class.',id'],
+            'marital_status_id'     => ['exists_field:'.MaritalStatus::class.',id'],
             'termination_reason_id' => ['exists_field:'.TerminationReason::class.',id'],
             'employee_no'           => ['unique:employees,employee_no'],
         ],

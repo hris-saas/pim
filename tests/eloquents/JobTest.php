@@ -16,7 +16,7 @@ class JobTest extends Test
     /** @test */
     public function can_add_an_employee_job()
     {
-        $employee = factory(Job::class)->create();
+        $employee = factory(Employee::class)->create();
 
         $data = [
             'location_id' => factory(Location::class)->create()->id,

@@ -89,4 +89,12 @@ class Employee extends Model
     {
         return $this->hasMany(EmergencyContact::class);
     }
+
+    /**
+     * Compensations that this model has.
+     */
+    public function compensation(): HasMany
+    {
+        return $this->hasMany(Compensation::class);
+    }
 }

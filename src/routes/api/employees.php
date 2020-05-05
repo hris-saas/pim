@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use HRis\PIM\Http\Controllers\Employee\JobController;
 use HRis\PIM\Http\Controllers\Employee\AddressController;
+use HRis\PIM\Http\Controllers\Employee\CompensationController;
 use HRis\PIM\Http\Controllers\Employee\EmergencyContactController;
 use HRis\PIM\Http\Controllers\Employee\EmploymentStatusController;
 use HRis\PIM\Http\Controllers\Employee\Controller as EmployeeController;
@@ -51,5 +52,12 @@ Route::group(['middleware' => ['auth:api'], 'prefix' => 'employees'], function (
         Route::post('emergency-contacts', [EmergencyContactController::class, 'store'])->name('emergency-contact.store');                                    // postman
         Route::patch('emergency-contacts/{emergencyContact:id}', [EmergencyContactController::class, 'update'])->name('emergency-contact.update');           // postman
         Route::delete('emergency-contacts/{emergencyContact:id}', [EmergencyContactController::class, 'destroy'])->name('emergency-contact.destroy');        // postman
+
+        // api/employees/{employee}/compensations
+        Route::get('compensations', [CompensationController::class, 'index'])->name('compensation.index');                                                    // postman
+        Route::get('compensations/{compensation:id}', [CompensationController::class, 'show'])->name('compensation.show');                                    // postman
+        Route::post('compensations', [CompensationController::class, 'store'])->name('compensation.store');                                                   // postman
+        Route::patch('compensations/{compensation:id}', [CompensationController::class, 'update'])->name('compensation.update');                              // postman
+        Route::delete('compensations/{compensation:id}', [CompensationController::class, 'destroy'])->name('compensation.destroy');                           // postman
     });
 });
