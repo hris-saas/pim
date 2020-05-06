@@ -18,7 +18,7 @@ class CompensationController extends Controller
      *
      * @param Request   $request
      * @param Employee  $employee
-     * 
+     *
      * @return AnonymousResourceCollection
      */
     public function index(Request $request, Employee $employee): AnonymousResourceCollection
@@ -32,7 +32,7 @@ class CompensationController extends Controller
      * @param Request       $request
      * @param Employee      $employee
      * @param Compensation  $compensation
-     * 
+     *
      * @return Resource
      */
     public function show(Request $request, Employee $employee, Compensation $compensation): Resource
@@ -45,7 +45,7 @@ class CompensationController extends Controller
      *
      * @param Request  $request
      * @param Employee $employee
-     * 
+     *
      * @return Resource
      */
     public function store(Request $request, Employee $employee): Resource
@@ -65,7 +65,7 @@ class CompensationController extends Controller
      * @param Request       $request
      * @param Employee      $employee
      * @param Compensation  $compensation
-     * 
+     *
      * @return Resource
      */
     public function update(Request $request, Employee $employee, Compensation $compensation): Resource
@@ -83,7 +83,7 @@ class CompensationController extends Controller
      * @param Request       $request
      * @param Employee      $employee
      * @param Compensation  $compensation
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Employee $employee, Compensation $compensation): JsonResponse

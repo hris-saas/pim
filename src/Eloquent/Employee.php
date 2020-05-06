@@ -2,14 +2,15 @@
 
 namespace HRis\PIM\Eloquent;
 
-use Illuminate\Database\Eloquent\Model;
+use HRis\Baum;
+use HRis\PIM\Traits\UsesBaum;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Employee extends Model
+class Employee extends Baum\Node
 {
-    use SoftDeletes;
+    use SoftDeletes, UsesBaum;
 
     /**
      * The attributes that are mass assignable.

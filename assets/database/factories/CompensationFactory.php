@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use HRis\Auth\Eloquent\User;
 use Faker\Generator as Faker;
 use HRis\PIM\Eloquent\PayType;
 use HRis\PIM\Eloquent\Employee;
@@ -29,6 +28,6 @@ $factory->define(Compensation::class, function (Faker $faker) {
         'pay_type_id' => factory(PayType::class)->create()->id,
         'pay_period_id' => factory(PayPeriod::class)->create()->id,
         'currency' => $faker->currencyCode,
-        'comment' => $faker->text
+        'comment' => $faker->text,
     ];
 });

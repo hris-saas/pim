@@ -37,6 +37,10 @@ class CreateEmployeesTable extends Migration
             $table->string('personal_email')->nullable();
             $table->string('avatar')->nullable();
             $table->boolean('is_active')->default(false);
+            $table->unsignedBigInteger('reports_to_id')->nullable();
+            $table->integer('lft')->nullable();
+            $table->integer('rgt')->nullable();
+            $table->integer('depth')->nullable();
             $table->date('started_at')->nullable();
             $table->timestamp('termination_performed_at')->nullable();
             $table->timestamp('terminated_at')->nullable();
@@ -48,6 +52,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('location_id')->references('id')->on('employee_fields')->onDelete('set null');
             $table->foreign('marital_status_id')->references('id')->on('employee_fields')->onDelete('set null');
             $table->foreign('termination_reason_id')->references('id')->on('employee_fields')->onDelete('set null');
+            $table->foreign('reports_to_id')->references('id')->on('employees')->onDelete('set null');
         });
     }
 

@@ -5,7 +5,6 @@ namespace HRis\PIM\Eloquent;
 use Hris\Auth\Eloquent\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Compensation extends Model
 {
@@ -26,7 +25,7 @@ class Compensation extends Model
         'pay_period_id',
         'change_reason_id',
         'comment',
-        'currency'
+        'currency',
     ];
 
     /**

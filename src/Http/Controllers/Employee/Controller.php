@@ -25,7 +25,7 @@ class Controller extends BaseController
             return Resource::collection(Employee::get());
         }
         
-        return Resource::collection(Employee::paginate($this->perPage));
+        return Resource::collection(Employee::orderBy('id')->paginate($this->perPage));
     }
 
     /**
