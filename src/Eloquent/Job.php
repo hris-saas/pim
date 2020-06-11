@@ -5,6 +5,7 @@ namespace HRis\PIM\Eloquent;
 use HRis\Auth\Eloquent\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Job extends Model
 {
@@ -20,7 +21,7 @@ class Job extends Model
     /**
      * User that this model belongs to.
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -28,7 +29,7 @@ class Job extends Model
     /**
      * Employee that this model belongs to.
      */
-    public function employee()
+    public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
     }
@@ -36,7 +37,7 @@ class Job extends Model
     /**
      * Location that this model belongs to.
      */
-    public function location()
+    public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
     }
@@ -44,7 +45,7 @@ class Job extends Model
     /**
      * division that this model belongs to.
      */
-    public function division()
+    public function division(): BelongsTo
     {
         return $this->belongsTo(Division::class);
     }
@@ -52,7 +53,7 @@ class Job extends Model
     /**
      * Department that this model belongs to.
      */
-    public function department()
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
@@ -60,7 +61,7 @@ class Job extends Model
     /**
      * JobTitle that this model belongs to.
      */
-    public function jobTitle()
+    public function jobTitle(): BelongsTo
     {
         return $this->belongsTo(JobTitle::class);
     }
@@ -68,7 +69,7 @@ class Job extends Model
     /**
      * ReportsTo that this model belongs to.
      */
-    public function reportsTo()
+    public function reportsTo(): BelongsTo
     {
         return $this->belongsTo(Employee::class, 'reports_to_id');
     }

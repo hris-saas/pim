@@ -55,7 +55,7 @@ class CompensationController extends Controller
         $compensation = Compensation::create($data);
 
         $employee->compensation()->save($compensation);
-        
+
         return new Resource($compensation);
     }
 
@@ -83,6 +83,8 @@ class CompensationController extends Controller
      * @param Request       $request
      * @param Employee      $employee
      * @param Compensation  $compensation
+     *
+     * @throws \Exception
      *
      * @return \Illuminate\Http\Response
      */

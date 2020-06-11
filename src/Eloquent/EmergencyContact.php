@@ -4,6 +4,7 @@ namespace HRis\PIM\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class EmergencyContact extends Model
 {
@@ -19,7 +20,7 @@ class EmergencyContact extends Model
     /**
      * Employee that this model belongs to.
      */
-    public function employee()
+    public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
     }
@@ -27,7 +28,7 @@ class EmergencyContact extends Model
     /**
      * Relationship that this model belongs to.
      */
-    public function relationship()
+    public function relationship(): BelongsTo
     {
         return $this->belongsTo(Relationship::class);
     }

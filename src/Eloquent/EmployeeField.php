@@ -11,7 +11,7 @@ class EmployeeField extends Model
 {
     use HasClass, HasSortOrder, SoftDeletes;
 
-    public static $fields = [
+    public static array $fields = [
         'departments'         => Department::class,
         'divisions'           => Division::class,
         'employment-statuses' => EmploymentStatus::class,
@@ -23,7 +23,7 @@ class EmployeeField extends Model
         'relationships'       => Relationship::class,
         'termination-reasons' => TerminationReason::class,
     ];
-    
+
     /**
      * The model's attributes.
      *

@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property HasMany addresses
+ * @property HasMany compensation
+ * @property HasMany emergencyContacts
+ */
 class Employee extends Baum\Node
 {
     use SoftDeletes, UsesBaum;

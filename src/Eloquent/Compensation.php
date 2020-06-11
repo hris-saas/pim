@@ -5,6 +5,7 @@ namespace HRis\PIM\Eloquent;
 use Hris\Auth\Eloquent\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Compensation extends Model
 {
@@ -31,7 +32,7 @@ class Compensation extends Model
     /**
      * User this model belongs to.
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -39,7 +40,7 @@ class Compensation extends Model
     /**
      * Employee this model belongs to.
      */
-    public function employee()
+    public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
     }
@@ -47,7 +48,7 @@ class Compensation extends Model
     /**
      * Pay period this model belongs to.
      */
-    public function payPeriod()
+    public function payPeriod(): BelongsTo
     {
         return $this->belongsTo(PayPeriod::class);
     }
@@ -55,7 +56,7 @@ class Compensation extends Model
     /**
      * Pay type this model belongs to.
      */
-    public function payType()
+    public function payType(): BelongsTo
     {
         return $this->belongsTo(PayType::class);
     }

@@ -4,7 +4,7 @@ namespace HRis\PIM\Eloquent;
 
 class EmploymentStatus extends EmployeeField
 {
-    /*
+    /**
      * The model's attributes.
      *
      * @var array
