@@ -9,7 +9,7 @@ Route::group(['middleware' => 'guest:api'], function () {
 });
 
 // auth
-Route::group(['middleware' => ['auth:api']], function () {
+Route::group(['middleware' => ['auth:api', 'locale']], function () {
     
     // api/departments
     Route::get('departments', [EmployeeFieldController::class, 'index'])->name('department.index');                                                          // postman

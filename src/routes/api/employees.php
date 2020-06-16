@@ -14,7 +14,7 @@ Route::group(['middleware' => 'guest:api'], function () {
 });
 
 // auth
-Route::group(['middleware' => ['auth:api'], 'prefix' => 'employees'], function () {
+Route::group(['middleware' => ['auth:api', 'locale'], 'prefix' => 'employees'], function () {
     
     // api/employees
     Route::get('', [EmployeeController::class, 'index'])->name('employee.index');                                                                            // postman
