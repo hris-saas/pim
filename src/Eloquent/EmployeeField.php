@@ -5,11 +5,12 @@ namespace HRis\PIM\Eloquent;
 use HRis\Core\Traits\HasClass;
 use HRis\Core\Traits\HasSortOrder;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EmployeeField extends Model
 {
-    use HasClass, HasSortOrder, SoftDeletes;
+    use HasClass, HasSortOrder, HasTranslations, SoftDeletes;
 
     public static array $fields = [
         'departments'         => Department::class,
@@ -23,6 +24,8 @@ class EmployeeField extends Model
         'relationships'       => Relationship::class,
         'termination-reasons' => TerminationReason::class,
     ];
+
+    public $translatable = ['name'];
 
     /**
      * The model's attributes.
