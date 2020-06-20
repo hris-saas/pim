@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use HRis\PIM\Http\Controllers\Employee\JobController;
 use HRis\PIM\Http\Controllers\Employee\AddressController;
+use HRis\PIM\Http\Controllers\Employee\DirectReportController;
 use HRis\PIM\Http\Controllers\Employee\CompensationController;
+use HRis\PIM\Http\Controllers\Employee\IndirectReportController;
 use HRis\PIM\Http\Controllers\Employee\EmergencyContactController;
 use HRis\PIM\Http\Controllers\Employee\EmploymentStatusController;
 use HRis\PIM\Http\Controllers\Employee\Controller as EmployeeController;
@@ -38,6 +40,12 @@ Route::group(['middleware' => ['auth:api', 'locale'], 'prefix' => 'employees'], 
         Route::post('employment-statuses', [EmploymentStatusController::class, 'store'])->name('employment-status.store');                                   // postman
         Route::patch('employment-statuses/{employmentStatus:id}', [EmploymentStatusController::class, 'update'])->name('employment-status.update');          // postman
         Route::delete('employment-statuses/{employmentStatus:id}', [EmploymentStatusController::class, 'destroy'])->name('employment-status.destroy');       // postman
+
+        // api/employees/{employee}/direct-reports
+        Route::get('direct-reports', [DirectReportController::class, 'index'])->name('direct-report.index');                                                 // postman
+
+        // api/employees/{employee}/indirect-reports
+        Route::get('indirect-reports', [IndirectReportController::class, 'index'])->name('indirect-report.index');                                           // postman
 
         // api/employees/{employee}/jobs
         Route::get('jobs', [JobController::class, 'index'])->name('job.index');                                                                              // postman

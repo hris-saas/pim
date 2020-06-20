@@ -103,4 +103,24 @@ class Employee extends Baum\Node
     {
         return $this->hasMany(Compensation::class);
     }
+
+    /**
+     * Wrap $this->children() to directReports
+     *
+     * @return mixed|array
+     */
+    public function directReports()
+    {
+        return $this->children()->get();
+    }
+
+     /**
+     * Wrap $this->descendants() to directReports
+     *
+     * @return mixed|array
+     */
+    public function indirectReports()
+    {
+        return $this->descendants()->get();
+    }
 }
