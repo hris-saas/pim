@@ -18,6 +18,6 @@ class DirectReportController extends Controller
      */
     public function index(Employee $employee): AnonymousResourceCollection
     {
-        return Resource::collection($employee->directReports());
+        return Resource::collection($employee->directReports()->paginate($this->perPage));
     }
 }

@@ -18,6 +18,6 @@ class IndirectReportController extends Controller
      */
     public function index(Employee $employee): AnonymousResourceCollection
     {
-        return Resource::collection($employee->indirectReports());
+        return Resource::collection($employee->indirectReports()->paginate($this->perPage));
     }
 }

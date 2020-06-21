@@ -111,7 +111,7 @@ class Employee extends Baum\Node
      */
     public function directReports()
     {
-        return $this->children()->get();
+        return $this->children();
     }
 
      /**
@@ -121,6 +121,6 @@ class Employee extends Baum\Node
      */
     public function indirectReports()
     {
-        return $this->descendants()->get();
+        return $this->descendants();
     }
 }
