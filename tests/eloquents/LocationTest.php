@@ -33,7 +33,7 @@ class LocationTest extends Test
     /** @test */
     public function can_update_an_existing_location()
     {
-        $location = factory(Location::class)->create();
+        $location = Location::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class LocationTest extends Test
     /** @test */
     public function can_retrieve_a_location()
     {
-        $locationToRetrieve = factory(Location::class)->create();
+        $locationToRetrieve = Location::factory()->create();
 
         $response = $this->authApi('GET', 'api/locations/' . $locationToRetrieve->id);
 
@@ -136,7 +136,7 @@ class LocationTest extends Test
     /** @test */
     public function can_delete_a_location()
     {
-        $locationToDelete = factory(Location::class)->create();
+        $locationToDelete = Location::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/locations/' . $locationToDelete->id);
 

@@ -1,27 +1,32 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
 use HRis\PIM\Eloquent\EmploymentStatus;
 use HRis\PIM\Eloquent\EmployeeEmploymentStatus;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class EmployeeEmploymentStatusFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = EmployeeEmploymentStatus::class;
 
-$factory->define(EmployeeEmploymentStatus::class, function (Faker $faker) {
-    return [
-        'employee_id' => null,
-        'employment_status_id' => factory(EmploymentStatus::class)->create()->id,
-        'effective_at' => $this->faker->date('Y-m-d'),
-        'comment' => $this->faker->sentence,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'employee_id' => null,
+            'employment_status_id' => EmploymentStatus::factory()->create()->id,
+            'effective_at' => $this->faker->date('Y-m-d'),
+            'comment' => $this->faker->sentence,
+        ];
+    }
+}

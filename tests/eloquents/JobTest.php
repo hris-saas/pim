@@ -16,13 +16,13 @@ class JobTest extends Test
     /** @test */
     public function can_add_an_employee_job()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
-            'location_id' => factory(Location::class)->create()->id,
-            'department_id' => factory(Department::class)->create()->id,
-            'division_id' => factory(Division::class)->create()->id,
-            'job_title_id' => factory(JobTitle::class)->create()->id,
+            'location_id' => Location::factory()->create()->id,
+            'department_id' => Department::factory()->create()->id,
+            'division_id' => Division::factory()->create()->id,
+            'job_title_id' => JobTitle::factory()->create()->id,
             'effective_at' => $this->faker->date('Y-m-d'),
             'comment' => $this->faker->sentence,
         ];
@@ -50,8 +50,8 @@ class JobTest extends Test
     /** @test */
     public function can_update_an_existing_employee_job()
     {
-        $job = factory(Job::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $job = Job::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $data = [
@@ -84,8 +84,8 @@ class JobTest extends Test
     /** @test */
     public function can_retrieve_an_employee_job()
     {
-        $job = factory(Job::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $job = Job::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$job->employee_id}/jobs/{$job->id}");
@@ -113,8 +113,8 @@ class JobTest extends Test
     /** @test */
     public function can_retrieve_all_employee_jobs()
     {
-        $job = factory(Job::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $job = Job::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$job->employee_id}/jobs");
@@ -142,8 +142,8 @@ class JobTest extends Test
     /** @test */
     public function can_delete_an_employee_job()
     {
-        $jobToDelete = factory(Job::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $jobToDelete = Job::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('DELETE', "api/employees/{$jobToDelete->employee_id}/jobs/" . $jobToDelete->id);

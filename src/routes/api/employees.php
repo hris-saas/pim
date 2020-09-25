@@ -16,8 +16,8 @@ Route::group(['middleware' => 'guest:api'], function () {
 });
 
 // auth
-Route::group(['middleware' => ['auth:api', 'locale'], 'prefix' => 'employees'], function () {
-    
+Route::group(['middleware' => ['auth:api'], 'prefix' => 'employees'], function () {
+
     // api/employees
     Route::get('', [EmployeeController::class, 'index'])->name('employee.index');                                                                            // postman
     Route::get('{employee}', [EmployeeController::class, 'show'])->name('employee.show');                                                                    // postman
@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth:api', 'locale'], 'prefix' => 'employees'], 
         Route::post('addresses', [AddressController::class, 'store'])->name('address.store');                                                                // postman
         Route::patch('addresses/{address:id}', [AddressController::class, 'update'])->name('address.update');                                                // postman
         Route::delete('addresses/{address:id}', [AddressController::class, 'destroy'])->name('address.destroy');                                             // postman
-        
+
         // api/employees/{employee}/employment-statuses
         Route::get('employment-statuses', [EmploymentStatusController::class, 'index'])->name('employment-status.index');                                    // postman
         Route::get('employment-statuses/{employmentStatus:id}', [EmploymentStatusController::class, 'show'])->name('employment-status.show');                // postman

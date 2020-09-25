@@ -33,7 +33,7 @@ class DivisionTest extends Test
     /** @test */
     public function can_update_an_existing_division()
     {
-        $division = factory(Division::class)->create();
+        $division = Division::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class DivisionTest extends Test
     /** @test */
     public function can_retrieve_a_division()
     {
-        $divisionToRetrieve = factory(Division::class)->create();
+        $divisionToRetrieve = Division::factory()->create();
 
         $response = $this->authApi('GET', 'api/divisions/' . $divisionToRetrieve->id);
 
@@ -136,7 +136,7 @@ class DivisionTest extends Test
     /** @test */
     public function can_delete_a_division()
     {
-        $divisionToDelete = factory(Division::class)->create();
+        $divisionToDelete = Division::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/divisions/' . $divisionToDelete->id);
 

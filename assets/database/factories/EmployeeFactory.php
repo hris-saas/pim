@@ -1,43 +1,49 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
+
 use HRis\PIM\Eloquent\Employee;
 use HRis\PIM\Eloquent\MaritalStatus;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class EmployeeFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Employee::class;
 
-$factory->define(Employee::class, function (Faker $faker) {
-    return [
-        'first_name' => $faker->firstName,
-        'middle_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'salutation' => 'Mr.',
-        'nickname' => $faker->name,
-        'employee_no' => $faker->randomNumber(),
-        'date_of_birth' => $faker->date('Y-m-d'),
-        'identity_no' => $faker->swiftBicNumber,
-        'gender' => 'm',
-        'marital_status_id' => MaritalStatus::first(),
-        'work_email' => $faker->safeEmail,
-        'personal_email' => $faker->safeEmail,
-        'work_phone' => $faker->phoneNumber,
-        'work_phone_ext' => $faker->phoneNumber,
-        'mobile_phone' => $faker->phoneNumber,
-        'home_phone' => $faker->phoneNumber,
-        'is_active' => true,
-        'started_at' => $faker->dateTimeBetween()->format('Y-m-d'),
-        'created_at' => now(),
-        'updated_at' => now(),
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'first_name' => $this->faker->firstName,
+            'middle_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'salutation' => 'Mr.',
+            'nickname' => $this->faker->name,
+            'employee_no' => $this->faker->randomNumber(),
+            'date_of_birth' => $this->faker->date('Y-m-d'),
+            'identity_no' => $this->faker->swiftBicNumber,
+            'gender' => 'm',
+            'marital_status_id' => MaritalStatus::first(),
+            'work_email' => $this->faker->safeEmail,
+            'personal_email' => $this->faker->safeEmail,
+            'work_phone' => $this->faker->phoneNumber,
+            'work_phone_ext' => $this->faker->phoneNumber,
+            'mobile_phone' => $this->faker->phoneNumber,
+            'home_phone' => $this->faker->phoneNumber,
+            'is_active' => true,
+            'started_at' => $this->faker->dateTimeBetween()->format('Y-m-d'),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+    }
+}

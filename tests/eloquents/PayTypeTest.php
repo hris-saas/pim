@@ -33,7 +33,7 @@ class PayTypeTest extends Test
     /** @test */
     public function can_update_an_existing_pay_type()
     {
-        $payType = factory(PayType::class)->create();
+        $payType = PayType::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class PayTypeTest extends Test
     /** @test */
     public function can_retrieve_a_pay_type()
     {
-        $payTypeToRetrieve = factory(PayType::class)->create();
+        $payTypeToRetrieve = PayType::factory()->create();
 
         $response = $this->authApi('GET', 'api/pay-types/' . $payTypeToRetrieve->id);
 
@@ -136,7 +136,7 @@ class PayTypeTest extends Test
     /** @test */
     public function can_delete_a_pay_type()
     {
-        $payTypeToDelete = factory(PayType::class)->create();
+        $payTypeToDelete = PayType::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/pay-types/' . $payTypeToDelete->id);
 

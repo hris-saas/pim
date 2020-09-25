@@ -13,10 +13,10 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_add_an_employee_employment_status()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
-            'employment_status_id' => factory(EmploymentStatus::class)->create()->id,
+            'employment_status_id' => EmploymentStatus::factory()->create()->id,
             'effective_at' => $this->faker->date('Y-m-d'),
             'comment' => $this->faker->sentence,
         ];
@@ -41,8 +41,8 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_update_an_existing_employee_employment_status()
     {
-        $employmentStatus = factory(EmployeeEmploymentStatus::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $employmentStatus = EmployeeEmploymentStatus::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $data = [
@@ -72,8 +72,8 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_an_employee_employment_status()
     {
-        $employmentStatus = factory(EmployeeEmploymentStatus::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $employmentStatus = EmployeeEmploymentStatus::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$employmentStatus->employee_id}/employment-statuses/{$employmentStatus->id}");
@@ -98,8 +98,8 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_all_employee_employment_statuses()
     {
-        $employmentStatus = factory(EmployeeEmploymentStatus::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $employmentStatus = EmployeeEmploymentStatus::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$employmentStatus->employee_id}/employment-statuses");
@@ -124,8 +124,8 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_delete_an_employee_employment_status()
     {
-        $employmentStatusToDelete = factory(EmployeeEmploymentStatus::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $employmentStatusToDelete = EmployeeEmploymentStatus::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('DELETE', "api/employees/{$employmentStatusToDelete->employee_id}/employment-statuses/" . $employmentStatusToDelete->id);

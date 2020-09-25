@@ -33,7 +33,7 @@ class RelationshipTest extends Test
     /** @test */
     public function can_update_an_existing_relationship()
     {
-        $relationship = factory(Relationship::class)->create();
+        $relationship = Relationship::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class RelationshipTest extends Test
     /** @test */
     public function can_retrieve_a_relationship()
     {
-        $relationshipToRetrieve = factory(Relationship::class)->create();
+        $relationshipToRetrieve = Relationship::factory()->create();
 
         $response = $this->authApi('GET', 'api/relationships/' . $relationshipToRetrieve->id);
 
@@ -136,7 +136,7 @@ class RelationshipTest extends Test
     /** @test */
     public function can_delete_a_relationship()
     {
-        $relationshipToDelete = factory(Relationship::class)->create();
+        $relationshipToDelete = Relationship::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/relationships/' . $relationshipToDelete->id);
 

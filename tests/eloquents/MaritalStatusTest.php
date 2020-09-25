@@ -33,7 +33,7 @@ class MaritalStatusTest extends Test
     /** @test */
     public function can_update_an_existing_marital_status()
     {
-        $maritalStatus = factory(MaritalStatus::class)->create();
+        $maritalStatus = MaritalStatus::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class MaritalStatusTest extends Test
     /** @test */
     public function can_retrieve_a_marital_status()
     {
-        $maritalStatusToRetrieve = factory(MaritalStatus::class)->create();
+        $maritalStatusToRetrieve = MaritalStatus::factory()->create();
 
         $response = $this->authApi('GET', 'api/marital-statuses/' . $maritalStatusToRetrieve->id);
 
@@ -136,7 +136,7 @@ class MaritalStatusTest extends Test
     /** @test */
     public function can_delete_a_marital_status()
     {
-        $maritalStatusToDelete = factory(MaritalStatus::class)->create();
+        $maritalStatusToDelete = MaritalStatus::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/marital-statuses/' . $maritalStatusToDelete->id);
 

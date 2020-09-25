@@ -33,7 +33,7 @@ class DepartmentTest extends Test
     /** @test */
     public function can_update_an_existing_department()
     {
-        $department = factory(Department::class)->create();
+        $department = Department::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class DepartmentTest extends Test
     /** @test */
     public function can_retrieve_a_department()
     {
-        $departmentToRetrieve = factory(Department::class)->create();
+        $departmentToRetrieve = Department::factory()->create();
 
         $response = $this->authApi('GET', 'api/departments/' . $departmentToRetrieve->id);
 
@@ -136,7 +136,7 @@ class DepartmentTest extends Test
     /** @test */
     public function can_delete_a_department()
     {
-        $departmentToDelete = factory(Department::class)->create();
+        $departmentToDelete = Department::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/departments/' . $departmentToDelete->id);
 

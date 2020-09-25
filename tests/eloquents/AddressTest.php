@@ -12,7 +12,7 @@ class AddressTest extends Test
     /** @test */
     public function can_add_an_employee_address()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
             'address_1' => $this->faker->streetAddress,
@@ -42,8 +42,8 @@ class AddressTest extends Test
     /** @test */
     public function can_update_an_existing_employee_address()
     {
-        $address = factory(Address::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $address = Address::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $data = [
@@ -72,8 +72,8 @@ class AddressTest extends Test
     /** @test */
     public function can_retrieve_an_employee_address()
     {
-        $address = factory(Address::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $address = Address::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$address->employee_id}/addresses/{$address->id}");
@@ -97,8 +97,8 @@ class AddressTest extends Test
     /** @test */
     public function can_retrieve_all_employee_addresses()
     {
-        $address = factory(Address::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $address = Address::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$address->employee_id}/addresses");
@@ -122,8 +122,8 @@ class AddressTest extends Test
     /** @test */
     public function can_delete_an_employee_address()
     {
-        $addressToDelete = factory(Address::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $addressToDelete = Address::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('DELETE', "api/employees/{$addressToDelete->employee_id}/addresses/" . $addressToDelete->id);

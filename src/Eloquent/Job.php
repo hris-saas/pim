@@ -6,10 +6,11 @@ use HRis\Auth\Eloquent\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Job extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +18,11 @@ class Job extends Model
      * @var array
      */
     protected $fillable = ['id', 'user_id', 'employee_id', 'location_id', 'division_id', 'department_id', 'job_title_id', 'reports_to_id', 'effective_at', 'comment', 'created_at', 'updated_at', 'deleted_at'];
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\JobFactory::new();
+    }
 
     /**
      * User that this model belongs to.

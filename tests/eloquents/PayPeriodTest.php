@@ -33,7 +33,7 @@ class PayPeriodTest extends Test
     /** @test */
     public function can_update_an_existing_pay_period()
     {
-        $payPeriod = factory(PayPeriod::class)->create();
+        $payPeriod = PayPeriod::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class PayPeriodTest extends Test
     /** @test */
     public function can_retrieve_a_pay_period()
     {
-        $payPeriodToRetrieve = factory(PayPeriod::class)->create();
+        $payPeriodToRetrieve = PayPeriod::factory()->create();
 
         $response = $this->authApi('GET', 'api/pay-periods/' . $payPeriodToRetrieve->id);
 
@@ -136,7 +136,7 @@ class PayPeriodTest extends Test
     /** @test */
     public function can_delete_a_pay_period()
     {
-        $payPeriodToDelete = factory(PayPeriod::class)->create();
+        $payPeriodToDelete = PayPeriod::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/pay-periods/' . $payPeriodToDelete->id);
 

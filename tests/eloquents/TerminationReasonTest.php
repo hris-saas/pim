@@ -33,7 +33,7 @@ class TerminationReasonTest extends Test
     /** @test */
     public function can_update_an_existing_termination_reason()
     {
-        $terminationReason = factory(TerminationReason::class)->create();
+        $terminationReason = TerminationReason::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class TerminationReasonTest extends Test
     /** @test */
     public function can_retrieve_a_termination_reason()
     {
-        $terminationReasonToRetrieve = factory(TerminationReason::class)->create();
+        $terminationReasonToRetrieve = TerminationReason::factory()->create();
 
         $response = $this->authApi('GET', 'api/termination-reasons/' . $terminationReasonToRetrieve->id);
 
@@ -136,7 +136,7 @@ class TerminationReasonTest extends Test
     /** @test */
     public function can_delete_a_termination_reason()
     {
-        $terminationReasonToDelete = factory(TerminationReason::class)->create();
+        $terminationReasonToDelete = TerminationReason::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/termination-reasons/' . $terminationReasonToDelete->id);
 

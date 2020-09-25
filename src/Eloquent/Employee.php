@@ -7,6 +7,7 @@ use HRis\PIM\Traits\UsesBaum;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property HasMany addresses
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Employee extends Baum\Node
 {
-    use SoftDeletes, UsesBaum;
+    use SoftDeletes, UsesBaum, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +24,11 @@ class Employee extends Baum\Node
      * @var array
      */
     protected $fillable = ['id', 'user_id', 'department_id', 'location_id', 'marital_status_id', 'termination_reason_id', 'first_name', 'middle_name', 'last_name', 'salutation', 'nickname', 'employee_no', 'date_of_birth', 'identity_no', 'gender', 'work_phone', 'work_phone_ext', 'mobile_phone', 'home_phone', 'work_email', 'personal_email', 'avatar', 'started_at', 'termination_performed_at', 'terminated_at', 'created_at', 'updated_at', 'deleted_at'];
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\EmployeeFactory::new();
+    }
 
     /**
      * Department that this model belongs to.
@@ -114,7 +120,7 @@ class Employee extends Baum\Node
         return $this->children();
     }
 
-     /**
+    /**
      * Wrap $this->descendants() to directReports
      *
      * @return mixed|array

@@ -33,7 +33,7 @@ class EmploymentStatusTest extends Test
     /** @test */
     public function can_update_an_existing_employment_status()
     {
-        $employmentStatus = factory(EmploymentStatus::class)->create();
+        $employmentStatus = EmploymentStatus::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class EmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_a_employment_status()
     {
-        $employmentStatusToRetrieve = factory(EmploymentStatus::class)->create();
+        $employmentStatusToRetrieve = EmploymentStatus::factory()->create();
 
         $response = $this->authApi('GET', 'api/employment-statuses/' . $employmentStatusToRetrieve->id);
 
@@ -136,7 +136,7 @@ class EmploymentStatusTest extends Test
     /** @test */
     public function can_delete_a_employment_status()
     {
-        $employmentStatusToDelete = factory(EmploymentStatus::class)->create();
+        $employmentStatusToDelete = EmploymentStatus::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/employment-statuses/' . $employmentStatusToDelete->id);
 

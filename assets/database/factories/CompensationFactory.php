@@ -1,33 +1,38 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
 use HRis\PIM\Eloquent\PayType;
 use HRis\PIM\Eloquent\Employee;
 use HRis\PIM\Eloquent\PayPeriod;
 use HRis\PIM\Eloquent\Compensation;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class CompensationFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Compensation::class;
 
-$factory->define(Compensation::class, function (Faker $faker) {
-    return [
-        'employee_id' => factory(Employee::class)->create()->id,
-        'effective_at' => now(),
-        'pay' => rand(1000, 99999),
-        'rate' => rand(10, 99),
-        'pay_type_id' => factory(PayType::class)->create()->id,
-        'pay_period_id' => factory(PayPeriod::class)->create()->id,
-        'currency' => $faker->currencyCode,
-        'comment' => $faker->text,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'employee_id' => Employee::factory()->create()->id,
+            'effective_at' => now(),
+            'pay' => rand(1000, 99999),
+            'rate' => rand(10, 99),
+            'pay_type_id' => PayType::factory()->create()->id,
+            'pay_period_id' => PayPeriod::factory()->create()->id,
+            'currency' => $this->faker->currencyCode,
+            'comment' => $this->faker->text,
+        ];
+    }
+}

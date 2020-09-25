@@ -13,11 +13,11 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_add_an_employee_emergency_contact()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
             'full_name' => $this->faker->name,
-            'relationship_id' => factory(Relationship::class)->create()->id,
+            'relationship_id' => Relationship::factory()->create()->id,
             'home_phone' => $this->faker->phoneNumber,
             'mobile_phone' => $this->faker->phoneNumber,
             'email' => $this->faker->safeEmail,
@@ -44,8 +44,8 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_update_an_existing_employee_emergency_contact()
     {
-        $emergencyContact = factory(EmergencyContact::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $emergencyContact = EmergencyContact::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $data = [
@@ -74,8 +74,8 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_retrieve_an_employee_emergency_contact()
     {
-        $emergencyContact = factory(EmergencyContact::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $emergencyContact = EmergencyContact::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$emergencyContact->employee_id}/emergency-contacts/{$emergencyContact->id}");
@@ -99,8 +99,8 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_retrieve_all_employee_emergency_contacts()
     {
-        $emergencyContact = factory(EmergencyContact::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $emergencyContact = EmergencyContact::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$emergencyContact->employee_id}/emergency-contacts");
@@ -124,8 +124,8 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_delete_an_employee_emergency_contact()
     {
-        $emergencyContactToDelete = factory(EmergencyContact::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $emergencyContactToDelete = EmergencyContact::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('DELETE', "api/employees/{$emergencyContactToDelete->employee_id}/emergency-contacts/" . $emergencyContactToDelete->id);

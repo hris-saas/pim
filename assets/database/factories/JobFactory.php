@@ -1,33 +1,38 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use HRis\PIM\Eloquent\Job;
-use Faker\Generator as Faker;
 use HRis\PIM\Eloquent\Division;
 use HRis\PIM\Eloquent\JobTitle;
 use HRis\PIM\Eloquent\Location;
 use HRis\PIM\Eloquent\Department;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class JobFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Job::class;
 
-$factory->define(Job::class, function (Faker $faker) {
-    return [
-        'employee_id' => null,
-        'location_id' => factory(Location::class)->create()->id,
-        'department_id' => factory(Department::class)->create()->id,
-        'division_id' => factory(Division::class)->create()->id,
-        'job_title_id' => factory(JobTitle::class)->create()->id,
-        'effective_at' => $this->faker->date('Y-m-d'),
-        'comment' => $this->faker->sentence,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'employee_id' => null,
+            'location_id' => Location::factory()->create()->id,
+            'department_id' => Department::factory()->create()->id,
+            'division_id' => Division::factory()->create()->id,
+            'job_title_id' => JobTitle::factory()->create()->id,
+            'effective_at' => $this->faker->date('Y-m-d'),
+            'comment' => $this->faker->sentence,
+        ];
+    }
+}

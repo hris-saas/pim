@@ -33,7 +33,7 @@ class JobTitleTest extends Test
     /** @test */
     public function can_update_an_existing_job_title()
     {
-        $jobTitle = factory(JobTitle::class)->create();
+        $jobTitle = JobTitle::factory()->create();
 
         $data = [
             'name' => $this->faker->name,
@@ -59,7 +59,7 @@ class JobTitleTest extends Test
     /** @test */
     public function can_retrieve_a_job_title()
     {
-        $jobTitleToRetrieve = factory(JobTitle::class)->create();
+        $jobTitleToRetrieve = JobTitle::factory()->create();
 
         $response = $this->authApi('GET', 'api/job-titles/' . $jobTitleToRetrieve->id);
 
@@ -136,7 +136,7 @@ class JobTitleTest extends Test
     /** @test */
     public function can_delete_a_job_title()
     {
-        $jobTitleToDelete = factory(JobTitle::class)->create();
+        $jobTitleToDelete = JobTitle::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/job-titles/' . $jobTitleToDelete->id);
 

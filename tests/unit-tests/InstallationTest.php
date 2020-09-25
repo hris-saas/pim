@@ -18,10 +18,10 @@ class InstallationTest extends Test
                 "$provider is not registered"
             );
         }
-        
-        Artisan::call('migrate:fresh', ['--path'=> '/../../hris-saas/core/assets/migrations/tenant']);
-        Artisan::call('migrate', ['--path'=> '/../../hris-saas/auth/assets/migrations/tenant']);
-        Artisan::call('migrate', ['--path'=> '/../../../assets/migrations/tenant']);
+
+        Artisan::call('migrate:fresh', ['--path'=> '/../../hris-saas/core/assets/database/migrations/tenant']);
+        Artisan::call('migrate', ['--path'=> '/../../hris-saas/auth/assets/database/migrations/tenant']);
+        Artisan::call('migrate', ['--path'=> '/../../../assets/database/migrations/tenant']);
         Artisan::call('passport:install', ['--force' => true]);
 
         User::create([

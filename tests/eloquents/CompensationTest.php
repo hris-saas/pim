@@ -14,17 +14,17 @@ class CompensationTest extends Test
     /** @test */
     public function can_add_an_employee_compensation()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
             'user' => $employee->id,
             'effective_at' => $this->faker->date('Y-m-d'),
             'pay' => rand(1000, 99999),
             'rate' => rand(10, 99),
-            'pay_type_id' => factory(PayType::class)->create()->id,
-            'pay_period_id' => factory(PayPeriod::class)->create()->id,
+            'pay_type_id' => PayType::factory()->create()->id,
+            'pay_period_id' => PayPeriod::factory()->create()->id,
             'currency' => $this->faker->currencyCode,
-            'comment' => $this->faker->text
+            'comment' => $this->faker->text,
         ];
 
         $response = $this->authApi('POST', "api/employees/{$employee->id}/compensations", $data);
@@ -46,15 +46,15 @@ class CompensationTest extends Test
     /** @test */
     public function can_update_an_existing_employee_compensation()
     {
-        $compensation = factory(Compensation::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $compensation = Compensation::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $data = [
             'employee_id' => $compensation->employee_id,
             'pay' => rand(1000, 99999),
             'rate' => rand(10, 99),
-            'comment' => 'comment'
+            'comment' => 'comment',
         ];
 
         $response = $this->authApi('PATCH', "api/employees/{$compensation->employee_id}/compensations/{$compensation->id}", $data);
@@ -77,8 +77,8 @@ class CompensationTest extends Test
     /** @test */
     public function can_retrieve_an_employee_compensation()
     {
-        $compensation = factory(Compensation::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $compensation = Compensation::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$compensation->employee_id}/compensations/{$compensation->id}");
@@ -95,7 +95,7 @@ class CompensationTest extends Test
                     'pay_type_id',
                     'pay_period_id',
                     'comment',
-                    'currency'
+                    'currency',
                 ],
             ]);
 
@@ -105,8 +105,8 @@ class CompensationTest extends Test
     /** @test */
     public function can_retrieve_all_employee_compensations()
     {
-        $compensation = factory(Compensation::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $compensation = Compensation::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('GET', "api/employees/{$compensation->employee_id}/compensations");
@@ -115,7 +115,7 @@ class CompensationTest extends Test
             ->assertJsonStructure([
                 'data' => [
                     [
-                        'id', 
+                        'id',
                         'user_id',
                         'employee_id',
                         'effective_at',
@@ -133,8 +133,8 @@ class CompensationTest extends Test
     /** @test */
     public function can_delete_an_employee_compensation()
     {
-        $compensationToDelete = factory(Compensation::class)->create([
-            'employee_id' => factory(Employee::class)->create()->id,
+        $compensationToDelete = Compensation::factory()->create([
+            'employee_id' => Employee::factory()->create()->id,
         ]);
 
         $response = $this->authApi('DELETE', "api/employees/{$compensationToDelete->employee_id}/compensations/" . $compensationToDelete->id);

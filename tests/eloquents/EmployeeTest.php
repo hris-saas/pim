@@ -50,7 +50,7 @@ class EmployeeTest extends Test
     /** @test */
     public function can_update_an_existing_employee()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
             'first_name' => $this->faker->firstName,
@@ -93,7 +93,7 @@ class EmployeeTest extends Test
     /** @test */
     public function can_retrieve_an_employee()
     {
-        $employeeToRetrieve = factory(Employee::class)->create();
+        $employeeToRetrieve = Employee::factory()->create();
 
         $response = $this->authApi('GET', 'api/employees/' . $employeeToRetrieve->id);
 
@@ -218,7 +218,7 @@ class EmployeeTest extends Test
     /** @test */
     public function can_delete_an_employee()
     {
-        $employeeToDelete = factory(Employee::class)->create();
+        $employeeToDelete = Employee::factory()->create();
 
         $response = $this->authApi('DELETE', 'api/employees/' . $employeeToDelete->id);
 

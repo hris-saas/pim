@@ -6,10 +6,11 @@ use Hris\Auth\Eloquent\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Compensation extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +29,11 @@ class Compensation extends Model
         'comment',
         'currency',
     ];
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\CompensationFactory::new();
+    }
 
     /**
      * User this model belongs to.
