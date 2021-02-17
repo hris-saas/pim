@@ -22,6 +22,7 @@ class EmployeeTest extends Test
             ->assertJsonStructure([
                 'data' => [
                     'id',
+                    'uuid',
                     'first_name',
                     'middle_name',
                     'last_name',

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +20,7 @@ class EmployeesTableSeeder extends Seeder
         DB::table('employees')->insert([
             [
                 'id' => 1,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => 1,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -54,6 +56,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 2,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -89,6 +92,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 3,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -124,6 +128,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 4,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -159,6 +164,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 5,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -194,6 +200,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 6,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -229,6 +236,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 7,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -264,6 +272,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 8,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -299,6 +308,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 9,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -334,6 +344,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 10,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -369,6 +380,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 11,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -404,6 +416,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 12,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -439,6 +452,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 13,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -474,6 +488,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 14,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -509,6 +524,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 15,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -544,6 +560,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 16,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -579,6 +596,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 17,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -614,6 +632,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 18,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -649,6 +668,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 19,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -684,6 +704,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 20,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -719,6 +740,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 21,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -754,6 +776,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 22,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -789,6 +812,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 23,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -824,6 +848,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 24,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -859,6 +884,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 25,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -894,6 +920,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 26,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -929,6 +956,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 27,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -964,6 +992,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 28,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -999,6 +1028,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 29,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1034,6 +1064,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 30,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -1069,6 +1100,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 31,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -1104,6 +1136,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 32,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1139,6 +1172,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 33,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -1174,6 +1208,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 34,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -1209,6 +1244,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 35,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1244,6 +1280,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 36,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -1279,6 +1316,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 37,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -1314,6 +1352,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 38,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1349,6 +1388,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 39,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -1384,6 +1424,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 40,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -1419,6 +1460,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 41,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1454,6 +1496,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 42,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -1489,6 +1532,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 43,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -1524,6 +1568,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 44,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1559,6 +1604,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 45,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -1594,6 +1640,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 46,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -1629,6 +1676,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 47,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1664,6 +1712,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 48,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,
@@ -1699,6 +1748,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 49,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 1,
                 'location_id' => 5,
@@ -1734,6 +1784,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 50,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 2,
                 'location_id' => 5,
@@ -1769,6 +1820,7 @@ class EmployeesTableSeeder extends Seeder
             ],
             [
                 'id' => 51,
+                'uuid' => Uuid::uuid4(),
                 'user_id' => null,
                 'department_id' => 3,
                 'location_id' => 5,

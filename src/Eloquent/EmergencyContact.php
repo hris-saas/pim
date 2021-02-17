@@ -4,12 +4,14 @@ namespace HRis\PIM\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Database\Factories\EmergencyContactFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class EmergencyContact extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +20,14 @@ class EmergencyContact extends Model
      */
     protected $fillable = ['id', 'user_id', 'employee_id', 'full_name', 'relationship_id', 'home_phone', 'mobile_phone', 'email', 'address', 'is_primary', 'created_at', 'updated_at', 'deleted_at'];
 
-    protected static function newFactory()
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
+    protected static function newFactory(): Factory
     {
-        return \Database\Factories\EmergencyContactFactory::new();
+        return EmergencyContactFactory::new();
     }
 
     /**

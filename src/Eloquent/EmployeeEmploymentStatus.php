@@ -5,8 +5,10 @@ namespace HRis\PIM\Eloquent;
 use HRis\Auth\Eloquent\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Database\Factories\EmployeeEmploymentStatusFactory;
 
 class EmployeeEmploymentStatus extends Model
 {
@@ -19,9 +21,14 @@ class EmployeeEmploymentStatus extends Model
      */
     protected $fillable = ['id', 'user_id', 'employee_id', 'employment_status_id', 'effective_at', 'comment', 'created_at', 'updated_at', 'deleted_at'];
 
-    protected static function newFactory()
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
+    protected static function newFactory(): Factory
     {
-        return \Database\Factories\EmployeeEmploymentStatusFactory::new();
+        return EmployeeEmploymentStatusFactory::new();
     }
 
     /**

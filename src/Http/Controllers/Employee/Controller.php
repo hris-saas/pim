@@ -2,6 +2,7 @@
 
 namespace HRis\PIM\Http\Controllers\Employee;
 
+use Ramsey\Uuid\Uuid;
 use HRis\PIM\Eloquent\Employee;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +25,7 @@ class Controller extends BaseController
         if ($this->perPage === 'all') {
             return Resource::collection(Employee::get());
         }
-        
+
         return Resource::collection(Employee::orderBy('id')->paginate($this->perPage));
     }
 
@@ -52,8 +53,10 @@ class Controller extends BaseController
     {
         $data = $request->all();
 
+        $data['uuid'] = Uuid::uuid4();
+
         $employee = Employee::create($data);
-        
+
         return new Resource($employee);
     }
 

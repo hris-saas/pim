@@ -2,6 +2,8 @@
 
 namespace HRis\PIM\Eloquent;
 
+use Database\Factories\TerminationReasonFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TerminationReason extends EmployeeField
@@ -15,8 +17,13 @@ class TerminationReason extends EmployeeField
      */
     protected $attributes = ['class' => self::class];
 
-    protected static function newFactory()
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
+    protected static function newFactory(): Factory
     {
-        return \Database\Factories\TerminationReasonFactory::new();
+        return TerminationReasonFactory::new();
     }
 }

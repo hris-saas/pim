@@ -24,6 +24,7 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
+            'uuid' => $this->faker->uuid,
             'first_name' => $this->faker->firstName,
             'middle_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
