@@ -63,7 +63,8 @@
         "laravel": {
             "providers": [
                 "HRis\\PIM\\Providers\\PIMServiceProvider",
-                "HRis\\PIM\\Providers\\RouteServiceProvider"
+                "HRis\\PIM\\Providers\\RouteServiceProvider",
+                "HRis\\PIM\\Providers\\EventServiceProvider"
             ]
         }
     },

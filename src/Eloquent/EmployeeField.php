@@ -47,4 +47,35 @@ class EmployeeField extends Model
      * @var string
      */
     protected $table = 'employee_fields';
+
+    /**
+     * Update the sort order of other records in the database.
+     *
+     * @param $record
+     */
+    public static function updateSortOrder($record)
+    {
+        // check if sort_order is in dirty array
+        if (array_key_exists('sort_order', $record->getDirty())) {
+            $newSortOrder = $record->sort_order;
+
+            $model = get_class($record);
+
+            // query other records in the model
+            $records = (new $model)::where('id', '!=', $record->id)->orderBy('sort_order')->get();
+
+            // update the other records without events so it won't repeat the call
+            (new $model)::withoutEvents(function () use ($records, $newSortOrder) {
+                $sortOrder = 1;
+
+                foreach ($records as $record) {
+                    if ($sortOrder == $newSortOrder) {
+                        $sortOrder++;
+                    }
+
+                    $record->update(['sort_order' => $sortOrder++]);
+                }
+            });
+        }
+    }
 }

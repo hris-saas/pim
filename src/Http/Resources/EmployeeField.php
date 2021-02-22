@@ -19,9 +19,6 @@ class EmployeeField extends JsonResource
             'id'         => $this->id,
             'sort_order' => $this->sort_order,
             'name'       => $this->name,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
         ];
     }
 }
