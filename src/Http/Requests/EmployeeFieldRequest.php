@@ -49,6 +49,8 @@ class EmployeeFieldRequest extends BaseRequest
     {
         $this->query->add(['model_type' => EmployeeField::$fields[$this->segment(2)]]);
 
+        $this->rules['PATCH']['sort_order'][] = 'sort_order_field:'.EmployeeField::class;
+
         if (count($this->segments()) >= 3) {
             $this->query->add(['model_id' => (int) $this->segment(3)]);
             $this->rules['PATCH']['name'][] = 'unique_field:'.EmployeeField::class.',name,'. $this->segment(3);

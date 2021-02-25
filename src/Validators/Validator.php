@@ -5,8 +5,9 @@ namespace HRis\PIM\Validators;
 class Validator
 {
     private static $validators = [
-        UniqueFieldValidator::class,
         ExistsFieldValidator::class,
+        SortOrderFieldValidator::class,
+        UniqueFieldValidator::class,
     ];
 
     public static function registerValidators(): void
