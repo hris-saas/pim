@@ -2,18 +2,18 @@
 
 namespace HRis\PIM\Observers;
 
-use HRis\PIM\Eloquent\EmployeeField;
+use HRis\Core\Observers\BaseObserver;
 
-class EmployeeFieldObserver
+class EmployeeFieldObserver extends BaseObserver
 {
     /**
      * Handle the EmployeeField "created" event.
      *
-     * @param  $model
+     * @param  $record
      *
      * @return void
      */
-    public function created($model)
+    public function created($record)
     {
         //
     }
@@ -21,35 +21,47 @@ class EmployeeFieldObserver
     /**
      * Handle the EmployeeField "updating" event.
      *
-     * @param  $model
+     * @param  $record
      *
      * @return void
      */
-    public function updating($model)
+    public function updating($record)
     {
-        EmployeeField::updateSortOrder($model);
+        parent::updating($record);
     }
 
     /**
      * Handle the EmployeeField "updated" event.
      *
-     * @param  $model
+     * @param  $record
      *
      * @return void
      */
-    public function updated($model)
+    public function updated($record)
     {
         //
     }
 
     /**
-     * Handle the EmployeeField "deleted" event.
+     * Handle the EmployeeField "deleting" event.
      *
-     * @param  $model
+     * @param  $record
      *
      * @return void
      */
-    public function deleted($model)
+    public function deleting($record)
+    {
+        parent::deleting($record);
+    }
+
+    /**
+     * Handle the EmployeeField "deleted" event.
+     *
+     * @param  $record
+     *
+     * @return void
+     */
+    public function deleted($record)
     {
         //
     }
@@ -57,11 +69,11 @@ class EmployeeFieldObserver
     /**
      * Handle the EmployeeField "forceDeleted" event.
      *
-     * @param  $model
+     * @param  $record
      *
      * @return void
      */
-    public function forceDeleted($model)
+    public function forceDeleted($record)
     {
         //
     }
