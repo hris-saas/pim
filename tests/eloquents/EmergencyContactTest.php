@@ -25,7 +25,7 @@ class EmergencyContactTest extends Test
             'is_primary' => true,
         ];
 
-        $response = $this->authApi('POST', "api/employees/{$employee->id}/emergency-contacts", $data);
+        $response = $this->authApi('POST', "api/employees/{$employee->uuid}/emergency-contacts", $data);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -44,15 +44,17 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_update_an_existing_employee_emergency_contact()
     {
+        $employee = Employee::factory()->create();
+
         $emergencyContact = EmergencyContact::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
         $data = [
             'full_name' => $this->faker->name,
         ];
 
-        $response = $this->authApi('PATCH', "api/employees/{$emergencyContact->employee_id}/emergency-contacts/{$emergencyContact->id}", $data);
+        $response = $this->authApi('PATCH', "api/employees/{$employee->uuid}/emergency-contacts/{$emergencyContact->id}", $data);
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -74,11 +76,13 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_retrieve_an_employee_emergency_contact()
     {
+        $employee = Employee::factory()->create();
+
         $emergencyContact = EmergencyContact::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$emergencyContact->employee_id}/emergency-contacts/{$emergencyContact->id}");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/emergency-contacts/{$emergencyContact->id}");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -99,11 +103,13 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_retrieve_all_employee_emergency_contacts()
     {
+        $employee = Employee::factory()->create();
+
         $emergencyContact = EmergencyContact::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$emergencyContact->employee_id}/emergency-contacts");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/emergency-contacts");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -124,11 +130,13 @@ class EmergencyContactTest extends Test
     /** @test */
     public function can_delete_an_employee_emergency_contact()
     {
+        $employee = Employee::factory()->create();
+
         $emergencyContactToDelete = EmergencyContact::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('DELETE', "api/employees/{$emergencyContactToDelete->employee_id}/emergency-contacts/" . $emergencyContactToDelete->id);
+        $response = $this->authApi('DELETE', "api/employees/{$employee->uuid}/emergency-contacts/" . $emergencyContactToDelete->id);
 
         $response->assertStatus(Response::HTTP_OK);
     }

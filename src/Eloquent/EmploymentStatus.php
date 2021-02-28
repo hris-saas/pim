@@ -2,11 +2,12 @@
 
 namespace HRis\PIM\Eloquent;
 
+use HRis\Core\Eloquent\Status;
 use Database\Factories\EmploymentStatusFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class EmploymentStatus extends EmployeeField
+class EmploymentStatus extends Status
 {
     use HasFactory;
 

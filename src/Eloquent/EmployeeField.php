@@ -15,7 +15,6 @@ class EmployeeField extends Model
     public static array $fields = [
         'departments'         => Department::class,
         'divisions'           => Division::class,
-        'employment-statuses' => EmploymentStatus::class,
         'job-titles'          => JobTitle::class,
         'locations'           => Location::class,
         'marital-statuses'    => MaritalStatus::class,

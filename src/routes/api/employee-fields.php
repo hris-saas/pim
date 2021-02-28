@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use HRis\Core\Http\Controllers\StatusController;
 use HRis\PIM\Http\Controllers\EmployeeFieldController;
 
 // guest
@@ -26,11 +27,11 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::delete('locations/{location}', [EmployeeFieldController::class, 'destroy'])->name('location.destroy');                                            // postman
 
     // api/employment-statuses
-    Route::get('employment-statuses', [EmployeeFieldController::class, 'index'])->name('employment-status.index');                                           // postman
-    Route::get('employment-statuses/{employmentStatus}', [EmployeeFieldController::class, 'show'])->name('employment-status.show');                          // postman
-    Route::post('employment-statuses', [EmployeeFieldController::class, 'store'])->name('employment-status.store');                                          // postman
-    Route::patch('employment-statuses/{employmentStatus}', [EmployeeFieldController::class, 'update'])->name('employment-status.update');                    // postman
-    Route::delete('employment-statuses/{employmentStatus}', [EmployeeFieldController::class, 'destroy'])->name('employment-status.destroy');                 // postman
+    Route::get('employment-statuses', [StatusController::class, 'index'])->name('employment-status.index');                                           // postman
+    Route::get('employment-statuses/{employmentStatus}', [StatusController::class, 'show'])->name('employment-status.show');                          // postman
+    Route::post('employment-statuses', [StatusController::class, 'store'])->name('employment-status.store');                                          // postman
+    Route::patch('employment-statuses/{employmentStatus}', [StatusController::class, 'update'])->name('employment-status.update');                    // postman
+    Route::delete('employment-statuses/{employmentStatus}', [StatusController::class, 'destroy'])->name('employment-status.destroy');                 // postman
 
     // api/job-titles
     Route::get('job-titles', [EmployeeFieldController::class, 'index'])->name('job-title.index');                                                            // postman

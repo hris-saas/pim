@@ -15,9 +15,9 @@ class EmploymentStatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('employee_fields')->where('class', EmploymentStatus::class)->delete();
+        DB::table('statuses')->where('class', EmploymentStatus::class)->delete();
 
-        DB::table('employee_fields')->insert([
+        DB::table('statuses')->insert([
             [
               'sort_order' => 1,
               'class' => EmploymentStatus::class,

@@ -47,7 +47,9 @@ class EmployeeFieldRequest extends BaseRequest
      */
     protected function addQuery(): void
     {
-        $this->query->add(['model_type' => EmployeeField::$fields[$this->segment(2)]]);
+        $fields = config('hris-saas.models.employee-fields');
+
+        $this->query->add(['model_type' => $fields[$this->segment(2)]]);
 
         $this->rules['PATCH']['sort_order'][] = 'sort_order_field:'.EmployeeField::class;
 

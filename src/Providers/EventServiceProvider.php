@@ -2,7 +2,6 @@
 
 namespace HRis\PIM\Providers;
 
-use HRis\PIM\Eloquent\EmployeeField;
 use HRis\PIM\Observers\EmployeeFieldObserver;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -15,7 +14,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $employeeFields = EmployeeField::$fields;
+        $employeeFields = config('hris-saas.models.employee-fields');
 
         foreach ($employeeFields as $model) {
             (new $model)::observe(EmployeeFieldObserver::class);

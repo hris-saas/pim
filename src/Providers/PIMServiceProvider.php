@@ -20,6 +20,10 @@ class PIMServiceProvider extends BaseServiceProvider
             $this->publishes([
                 __DIR__.'/../../assets/database/migrations' => database_path('migrations'),
             ], 'hris-saas::pim-migrations');
+
+            $path = realpath(__DIR__.'/../../assets/config/config.php');
+            
+            $this->mergeConfigFrom($path, 'hris-saas');
         }
 
         Validator::registerValidators();

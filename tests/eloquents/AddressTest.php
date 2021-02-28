@@ -23,7 +23,7 @@ class AddressTest extends Test
             'country' => $this->faker->country,
         ];
 
-        $response = $this->authApi('POST', "api/employees/{$employee->id}/addresses", $data);
+        $response = $this->authApi('POST', "api/employees/{$employee->uuid}/addresses", $data);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -42,15 +42,17 @@ class AddressTest extends Test
     /** @test */
     public function can_update_an_existing_employee_address()
     {
+        $employee = Employee::factory()->create();
+
         $address = Address::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
         $data = [
             'address_1' => $this->faker->streetAddress,
         ];
 
-        $response = $this->authApi('PATCH', "api/employees/{$address->employee_id}/addresses/{$address->id}", $data);
+        $response = $this->authApi('PATCH', "api/employees/{$employee->uuid}/addresses/{$address->id}", $data);
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -72,11 +74,13 @@ class AddressTest extends Test
     /** @test */
     public function can_retrieve_an_employee_address()
     {
+        $employee = Employee::factory()->create();
+
         $address = Address::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$address->employee_id}/addresses/{$address->id}");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/addresses/{$address->id}");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -97,11 +101,13 @@ class AddressTest extends Test
     /** @test */
     public function can_retrieve_all_employee_addresses()
     {
+        $employee = Employee::factory()->create();
+
         $address = Address::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$address->employee_id}/addresses");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/addresses");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -122,11 +128,13 @@ class AddressTest extends Test
     /** @test */
     public function can_delete_an_employee_address()
     {
+        $employee = Employee::factory()->create();
+
         $addressToDelete = Address::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('DELETE', "api/employees/{$addressToDelete->employee_id}/addresses/" . $addressToDelete->id);
+        $response = $this->authApi('DELETE', "api/employees/{$employee->uuid}/addresses/" . $addressToDelete->id);
 
         $response->assertStatus(Response::HTTP_OK);
     }

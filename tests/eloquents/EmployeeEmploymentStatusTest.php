@@ -21,7 +21,7 @@ class EmployeeEmploymentStatusTest extends Test
             'comment' => $this->faker->sentence,
         ];
 
-        $response = $this->authApi('POST', "api/employees/{$employee->id}/employment-statuses", $data);
+        $response = $this->authApi('POST', "api/employees/{$employee->uuid}/employment-statuses", $data);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -41,15 +41,17 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_update_an_existing_employee_employment_status()
     {
+        $employee = Employee::factory()->create();
+
         $employmentStatus = EmployeeEmploymentStatus::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
         $data = [
             'comment' => $this->faker->sentence,
         ];
 
-        $response = $this->authApi('PATCH', "api/employees/{$employmentStatus->employee_id}/employment-statuses/{$employmentStatus->id}", $data);
+        $response = $this->authApi('PATCH', "api/employees/{$employee->uuid}/employment-statuses/{$employmentStatus->id}", $data);
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -72,11 +74,13 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_an_employee_employment_status()
     {
+        $employee = Employee::factory()->create();
+
         $employmentStatus = EmployeeEmploymentStatus::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$employmentStatus->employee_id}/employment-statuses/{$employmentStatus->id}");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/employment-statuses/{$employmentStatus->id}");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -98,11 +102,13 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_all_employee_employment_statuses()
     {
+        $employee = Employee::factory()->create();
+
         $employmentStatus = EmployeeEmploymentStatus::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$employmentStatus->employee_id}/employment-statuses");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/employment-statuses");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -124,11 +130,13 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_delete_an_employee_employment_status()
     {
+        $employee = Employee::factory()->create();
+
         $employmentStatusToDelete = EmployeeEmploymentStatus::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('DELETE', "api/employees/{$employmentStatusToDelete->employee_id}/employment-statuses/" . $employmentStatusToDelete->id);
+        $response = $this->authApi('DELETE', "api/employees/{$employee->uuid}/employment-statuses/" . $employmentStatusToDelete->id);
 
         $response->assertStatus(Response::HTTP_OK);
     }

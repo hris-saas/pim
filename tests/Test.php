@@ -15,10 +15,12 @@ class Test extends TestsCase
     protected $loadProviders = [
         \HRis\Core\Providers\CoreServiceProvider::class,
         \HRis\Core\Providers\RouteServiceProvider::class,
+        \HRis\Core\Providers\EventServiceProvider::class,
         \HRis\Auth\Providers\RouteServiceProvider::class,
         \HRis\Auth\Providers\AuthServiceProvider::class,
         \HRis\PIM\Providers\PIMServiceProvider::class,
         \HRis\PIM\Providers\RouteServiceProvider::class,
+        \HRis\PIM\Providers\EventServiceProvider::class,
         \Laravel\Passport\PassportServiceProvider::class,
     ];
 

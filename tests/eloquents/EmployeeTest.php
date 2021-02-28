@@ -57,7 +57,7 @@ class EmployeeTest extends Test
             'first_name' => $this->faker->firstName,
         ];
 
-        $response = $this->authApi('PATCH', 'api/employees/' . $employee->id, $data);
+        $response = $this->authApi('PATCH', 'api/employees/' . $employee->uuid, $data);
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -96,7 +96,7 @@ class EmployeeTest extends Test
     {
         $employeeToRetrieve = Employee::factory()->create();
 
-        $response = $this->authApi('GET', 'api/employees/' . $employeeToRetrieve->id);
+        $response = $this->authApi('GET', 'api/employees/' . $employeeToRetrieve->uuid);
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -221,7 +221,7 @@ class EmployeeTest extends Test
     {
         $employeeToDelete = Employee::factory()->create();
 
-        $response = $this->authApi('DELETE', 'api/employees/' . $employeeToDelete->id);
+        $response = $this->authApi('DELETE', 'api/employees/' . $employeeToDelete->uuid);
 
         $response->assertStatus(Response::HTTP_OK);
     }

@@ -19,9 +19,9 @@ class InstallationTest extends Test
             );
         }
 
-        Artisan::call('migrate:fresh', ['--path'=> '/../../hris-saas/core/assets/database/migrations/tenant']);
-        Artisan::call('migrate', ['--path'=> '/../../hris-saas/auth/assets/database/migrations/tenant']);
-        Artisan::call('migrate', ['--path'=> '/../../../assets/database/migrations/tenant']);
+        Artisan::call('migrate:fresh', ['--path' => '/../../hris-saas/core/assets/database/migrations/tenant']);
+        Artisan::call('migrate', ['--path' => '/../../hris-saas/auth/assets/database/migrations/tenant']);
+        Artisan::call('migrate', ['--path' => '/../../../assets/database/migrations/tenant']);
         Artisan::call('passport:install', ['--force' => true]);
 
         User::create([

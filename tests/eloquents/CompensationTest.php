@@ -27,7 +27,7 @@ class CompensationTest extends Test
             'comment' => $this->faker->text,
         ];
 
-        $response = $this->authApi('POST', "api/employees/{$employee->id}/compensations", $data);
+        $response = $this->authApi('POST', "api/employees/{$employee->uuid}/compensations", $data);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -46,8 +46,10 @@ class CompensationTest extends Test
     /** @test */
     public function can_update_an_existing_employee_compensation()
     {
+        $employee = Employee::factory()->create();
+
         $compensation = Compensation::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
         $data = [
@@ -57,7 +59,7 @@ class CompensationTest extends Test
             'comment' => 'comment',
         ];
 
-        $response = $this->authApi('PATCH', "api/employees/{$compensation->employee_id}/compensations/{$compensation->id}", $data);
+        $response = $this->authApi('PATCH', "api/employees/{$employee->uuid}/compensations/{$compensation->id}", $data);
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -77,11 +79,13 @@ class CompensationTest extends Test
     /** @test */
     public function can_retrieve_an_employee_compensation()
     {
+        $employee = Employee::factory()->create();
+
         $compensation = Compensation::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$compensation->employee_id}/compensations/{$compensation->id}");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/compensations/{$compensation->id}");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -105,11 +109,13 @@ class CompensationTest extends Test
     /** @test */
     public function can_retrieve_all_employee_compensations()
     {
+        $employee = Employee::factory()->create();
+
         $compensation = Compensation::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('GET', "api/employees/{$compensation->employee_id}/compensations");
+        $response = $this->authApi('GET', "api/employees/{$employee->uuid}/compensations");
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
@@ -133,11 +139,13 @@ class CompensationTest extends Test
     /** @test */
     public function can_delete_an_employee_compensation()
     {
+        $employee = Employee::factory()->create();
+
         $compensationToDelete = Compensation::factory()->create([
-            'employee_id' => Employee::factory()->create()->id,
+            'employee_id' => $employee->id,
         ]);
 
-        $response = $this->authApi('DELETE', "api/employees/{$compensationToDelete->employee_id}/compensations/" . $compensationToDelete->id);
+        $response = $this->authApi('DELETE', "api/employees/{$employee->uuid}/compensations/" . $compensationToDelete->id);
 
         $response->assertStatus(Response::HTTP_OK);
     }
