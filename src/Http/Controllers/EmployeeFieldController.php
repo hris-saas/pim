@@ -26,7 +26,7 @@ class EmployeeFieldController extends Controller
 
             return Resource::collection($collection);
         }
-        
+
         return Resource::collection($collection->paginate($this->perPage));
     }
 
@@ -56,7 +56,7 @@ class EmployeeFieldController extends Controller
         $data = $request->getData();
 
         $record = (new $request->model_type)::create($data);
-        
+
         return new Resource($record);
     }
 
@@ -72,7 +72,7 @@ class EmployeeFieldController extends Controller
         $data = $request->getData();
 
         $record = (new $request->model_type)::findOrFail($request->model_id);
-
+        $record = (new $request->model_type)::processMovingForward($request, $record);
         $record = tap($record)->update($data);
 
         return new Resource($record);
