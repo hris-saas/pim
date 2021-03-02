@@ -246,4 +246,144 @@ class EmployeeTest extends Test
         $this->assertContains($directReport->id, $directReportIds);
         $this->assertContains($indirectReport->id, $indirectReportIds);
     }
+
+    /** @test */
+    public function can_not_add_employee_with_department_id_does_not_exists()
+    {
+        $data = [
+            'first_name' => $this->faker->firstName,
+            'last_name'  => $this->faker->lastName,
+            'department_id' => 1001,
+        ];
+
+        $response = $this->authApi('POST', 'api/employees', $data);
+
+        $response->assertStatus(422)
+            ->assertJsonStructure([
+                'message',
+                'errors' => [
+                    'department_id',
+                ],
+            ]);
+    }
+
+    /** @test */
+    public function can_get_employee_direct_reports()
+    {
+        $employee = Employee::factory()->create();
+
+        $directReport = Employee::factory()->create([
+            'reports_to_id' => $employee->id,
+        ]);
+
+        $response = $this->authApi('GET', 'api/employees/' . $employee->uuid . '/direct-reports');
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+
+                'data' => [
+                    [
+                        'id',
+                        'first_name',
+                        'middle_name',
+                        'last_name',
+                        'salutation',
+                        'nickname',
+                        'employee_no',
+                        'date_of_birth',
+                        'identity_no',
+                        'gender',
+                        'addresses',
+                        'work_email',
+                        'personal_email',
+                        'work_phone',
+                        'work_phone_ext',
+                        'mobile_phone',
+                        'home_phone',
+                        'is_active',
+                        'started_at',
+                        'created_at',
+                        'updated_at',
+                        'deleted_at',
+                    ],
+                ],
+                'links' => [
+                    'first',
+                    'last',
+                    'prev',
+                    'next',
+                ],
+                'meta' => [
+                    'current_page',
+                    'from',
+                    'last_page',
+                    'path',
+                    'per_page',
+                    'to',
+                    'total',
+                ],
+            ]);
+    }
+
+    /** @test */
+    public function can_get_employee_indirect_reports()
+    {
+        $employee = Employee::factory()->create();
+
+        $directReport = Employee::factory()->create([
+            'reports_to_id' => $employee->id,
+        ]);
+
+        Employee::factory()->create([
+            'reports_to_id' => $directReport->id,
+        ]);
+
+        $response = $this->authApi('GET', 'api/employees/' . $employee->uuid . '/indirect-reports');
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+
+                'data' => [
+                    [
+                        'id',
+                        'first_name',
+                        'middle_name',
+                        'last_name',
+                        'salutation',
+                        'nickname',
+                        'employee_no',
+                        'date_of_birth',
+                        'identity_no',
+                        'gender',
+                        'addresses',
+                        'work_email',
+                        'personal_email',
+                        'work_phone',
+                        'work_phone_ext',
+                        'mobile_phone',
+                        'home_phone',
+                        'is_active',
+                        'started_at',
+                        'created_at',
+                        'updated_at',
+                        'deleted_at',
+                    ],
+                ],
+                'links' => [
+                    'first',
+                    'last',
+                    'prev',
+                    'next',
+                ],
+                'meta' => [
+                    'current_page',
+                    'from',
+                    'last_page',
+                    'path',
+                    'per_page',
+                    'to',
+                    'total',
+                ],
+            ]);
+    }
 }
