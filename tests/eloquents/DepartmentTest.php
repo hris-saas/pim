@@ -127,4 +127,15 @@ class DepartmentTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_department()
+    {
+        $departmentToDelete = Department::factory()->create();
+        $departmentToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/departments/' . $departmentToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

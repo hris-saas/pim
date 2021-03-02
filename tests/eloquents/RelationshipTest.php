@@ -127,4 +127,15 @@ class RelationshipTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_relationship()
+    {
+        $relationshipToDelete = Relationship::factory()->create();
+        $relationshipToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/relationships/' . $relationshipToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

@@ -140,4 +140,18 @@ class EmployeeEmploymentStatusTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_get_employee_employment_status_related_models()
+    {
+        $employee = Employee::factory()->create();
+
+        $employmentStatus = EmployeeEmploymentStatus::factory()->create([
+            'user_id'     => 1,
+            'employee_id' => $employee->id,
+        ]);
+
+        $this->assertEquals($employmentStatus->user->id, 1);
+        $this->assertEquals($employmentStatus->employee->id, $employee->id);
+    }
 }

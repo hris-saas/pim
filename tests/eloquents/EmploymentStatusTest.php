@@ -127,4 +127,15 @@ class EmploymentStatusTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_employment_status()
+    {
+        $employmentStatusToDelete = EmploymentStatus::factory()->create();
+        $employmentStatusToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/employment-statuses/' . $employmentStatusToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

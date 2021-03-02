@@ -127,4 +127,15 @@ class MaritalStatusTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_marital_status()
+    {
+        $maritalStatusToDelete = MaritalStatus::factory()->create();
+        $maritalStatusToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/marital-statuses/' . $maritalStatusToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

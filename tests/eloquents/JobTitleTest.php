@@ -127,4 +127,15 @@ class JobTitleTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_job_title()
+    {
+        $jobTitleToDelete = JobTitle::factory()->create();
+        $jobTitleToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/job-titles/' . $jobTitleToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

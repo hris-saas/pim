@@ -127,4 +127,15 @@ class PayPeriodTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_pay_period()
+    {
+        $payPeriodToDelete = PayPeriod::factory()->create();
+        $payPeriodToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/pay-periods/' . $payPeriodToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

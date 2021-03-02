@@ -225,4 +225,25 @@ class EmployeeTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_get_employee_related_models()
+    {
+        $employee = Employee::factory()->create();
+
+        $directReport = Employee::factory()->create([
+            'reports_to_id' => $employee->id,
+        ]);
+
+        $indirectReport = Employee::factory()->create([
+            'reports_to_id' => $directReport->id,
+        ]);
+
+        $employee = $employee->fresh();
+        $directReportIds = $employee->directReports()->pluck('id')->toArray();
+        $indirectReportIds = $employee->indirectReports()->pluck('id')->toArray();
+
+        $this->assertContains($directReport->id, $directReportIds);
+        $this->assertContains($indirectReport->id, $indirectReportIds);
+    }
 }

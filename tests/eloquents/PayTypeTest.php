@@ -127,4 +127,15 @@ class PayTypeTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_pay_type()
+    {
+        $payTypeToDelete = PayType::factory()->create();
+        $payTypeToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/pay-types/' . $payTypeToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

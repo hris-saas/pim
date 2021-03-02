@@ -140,4 +140,16 @@ class EmergencyContactTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_get_employee_emergency_contact_related_models()
+    {
+        $employee = Employee::factory()->create();
+
+        $emergencyContact = EmergencyContact::factory()->create([
+            'employee_id' => $employee->id,
+        ]);
+
+        $this->assertEquals($emergencyContact->employee->id, $employee->id);
+    }
 }

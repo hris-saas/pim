@@ -127,4 +127,15 @@ class LocationTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_location()
+    {
+        $locationToDelete = Location::factory()->create();
+        $locationToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/locations/' . $locationToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

@@ -138,4 +138,16 @@ class AddressTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_get_employee_address_related_models()
+    {
+        $employee = Employee::factory()->create();
+
+        $address = Address::factory()->create([
+            'employee_id'   => $employee->id,
+        ]);
+
+        $this->assertEquals($address->employee->id, $employee->id);
+    }
 }

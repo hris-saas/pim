@@ -158,4 +158,21 @@ class JobTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_get_job_related_models()
+    {
+        $employee = Employee::factory()->create();
+        $reportsTo = Employee::factory()->create();
+
+        $job = Job::factory()->create([
+            'user_id'       => 1,
+            'employee_id'   => $employee->id,
+            'reports_to_id' => $reportsTo->id,
+        ]);
+
+        $this->assertEquals($job->user->id, 1);
+        $this->assertEquals($job->employee->id, $employee->id);
+        $this->assertEquals($job->reportsTo->id, $reportsTo->id);
+    }
 }

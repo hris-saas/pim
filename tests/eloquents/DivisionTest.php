@@ -127,4 +127,15 @@ class DivisionTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_division()
+    {
+        $divisionToDelete = Division::factory()->create();
+        $divisionToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/divisions/' . $divisionToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

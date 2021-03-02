@@ -27,7 +27,6 @@ return [
             'divisions'           => Division::class,
             'job-titles'          => JobTitle::class,
             'locations'           => Location::class,
-            'marital-statuses'    => MaritalStatus::class,
             'pay-periods'         => PayPeriod::class,
             'pay-types'           => PayType::class,
             'relationships'       => Relationship::class,
@@ -36,6 +35,7 @@ return [
 
         'statuses' => [
             'employment-statuses' => EmploymentStatus::class,
+            'marital-statuses'    => MaritalStatus::class,
         ],
     ],
 ];

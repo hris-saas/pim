@@ -127,4 +127,15 @@ class TerminationReasonTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_restore_a_termination_reason()
+    {
+        $terminationReasonToDelete = TerminationReason::factory()->create();
+        $terminationReasonToDelete->delete();
+
+        $response = $this->authApi('PATCH', 'api/termination-reasons/' . $terminationReasonToDelete->id . '/restore');
+
+        $response->assertStatus(Response::HTTP_OK);
+    }
 }

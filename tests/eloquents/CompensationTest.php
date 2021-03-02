@@ -149,4 +149,24 @@ class CompensationTest extends Test
 
         $response->assertStatus(Response::HTTP_OK);
     }
+
+    /** @test */
+    public function can_get_employee_compensation_related_models()
+    {
+        $employee = Employee::factory()->create();
+        $payPeriod = PayPeriod::factory()->create();
+        $payType = PayType::factory()->create();
+
+        $emergencyContact = Compensation::factory()->create([
+            'employee_id'   => $employee->id,
+            'user_id'       => 1,
+            'pay_period_id' => $payPeriod->id,
+            'pay_type_id'   => $payType->id,
+        ]);
+
+        $this->assertEquals($emergencyContact->employee->id, $employee->id);
+        $this->assertEquals($emergencyContact->user->id, 1);
+        $this->assertEquals($emergencyContact->payPeriod->id, $payPeriod->id);
+        $this->assertEquals($emergencyContact->payType->id, $payType->id);
+    }
 }
