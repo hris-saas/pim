@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use HRis\Core\Http\Controllers\StatusController;
 use HRis\PIM\Http\Controllers\EmployeeFieldController;
 
 // guest
@@ -28,14 +27,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::delete('locations/{location}', [EmployeeFieldController::class, 'destroy'])->name('location.destroy');                                            // postman
     Route::patch('locations/{location}/restore', [EmployeeFieldController::class, 'restore'])->name('location.restore');                                     // postman
 
-    // api/employment-statuses
-    Route::get('employment-statuses', [StatusController::class, 'index'])->name('employment-status.index');                                                  // postman
-    Route::get('employment-statuses/{employmentStatus}', [StatusController::class, 'show'])->name('employment-status.show');                                 // postman
-    Route::post('employment-statuses', [StatusController::class, 'store'])->name('employment-status.store');                                                 // postman
-    Route::patch('employment-statuses/{employmentStatus}', [StatusController::class, 'update'])->name('employment-status.update');                           // postman
-    Route::delete('employment-statuses/{employmentStatus}', [StatusController::class, 'destroy'])->name('employment-status.destroy');                        // postman
-    Route::patch('employment-statuses/{employmentStatus}/restore', [StatusController::class, 'restore'])->name('employment-status.restore');                 // postman
-
     // api/job-titles
     Route::get('job-titles', [EmployeeFieldController::class, 'index'])->name('job-title.index');                                                            // postman
     Route::get('job-titles/{jobTitle}', [EmployeeFieldController::class, 'show'])->name('job-title.show');                                                   // postman
@@ -43,14 +34,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::patch('job-titles/{jobTitle}', [EmployeeFieldController::class, 'update'])->name('job-title.update');                                             // postman
     Route::delete('job-titles/{jobTitle}', [EmployeeFieldController::class, 'destroy'])->name('job-title.destroy');                                          // postman
     Route::patch('job-titles/{jobTitle}/restore', [EmployeeFieldController::class, 'restore'])->name('job-title.restore');                                   // postman
-
-    // api/marital-statuses
-    Route::get('marital-statuses', [StatusController::class, 'index'])->name('marital-status.index');                                                        // postman
-    Route::get('marital-statuses/{maritalStatus}', [StatusController::class, 'show'])->name('marital-status.show');                                          // postman
-    Route::post('marital-statuses', [StatusController::class, 'store'])->name('marital-status.store');                                                       // postman
-    Route::patch('marital-statuses/{maritalStatus}', [StatusController::class, 'update'])->name('marital-status.update');                                    // postman
-    Route::delete('marital-statuses/{maritalStatus}', [StatusController::class, 'destroy'])->name('marital-status.destroy');                                 // postman
-    Route::patch('marital-statuses/{maritalStatus}/restore', [StatusController::class, 'restore'])->name('marital-status.restore');                          // postman
 
     // api/termination-reasons
     Route::get('termination-reasons', [EmployeeFieldController::class, 'index'])->name('termination-reason.index');                                          // postman
@@ -82,7 +65,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('pay-types', [EmployeeFieldController::class, 'store'])->name('pay-type.store');                                                             // postman
     Route::patch('pay-types/{payType}', [EmployeeFieldController::class, 'update'])->name('pay-type.update');                                                // postman
     Route::delete('pay-types/{payType}', [EmployeeFieldController::class, 'destroy'])->name('pay-type.destroy');                                             // postman
-    Route::patch('pay-types/{payType}/restore', [EmployeeFieldController::class, 'restore'])->name('pay-type.resetore');                                    // postman
+    Route::patch('pay-types/{payType}/restore', [EmployeeFieldController::class, 'restore'])->name('pay-type.restore');                                      // postman
 
     // api/relationships
     Route::get('relationships', [EmployeeFieldController::class, 'index'])->name('relationship.index');                                                      // postman

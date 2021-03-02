@@ -29,5 +29,8 @@ class InstallationTest extends Test
             'name'  => 'Tenant1 Admin',
             'password' => bcrypt('password'),
         ]);
+
+        Artisan::call('db:seed', ['--class' => 'PermissionsTableSeeder']);
+        Artisan::call('db:seed', ['--class' => 'RolesTableSeeder']);
     }
 }
