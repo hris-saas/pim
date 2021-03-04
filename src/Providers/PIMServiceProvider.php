@@ -3,7 +3,7 @@
 namespace HRis\PIM\Providers;
 
 use HRis\PIM\Validators\Validator;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use HRis\Core\Providers\BaseServiceProvider;
 
 class PIMServiceProvider extends BaseServiceProvider
 {
@@ -20,11 +20,9 @@ class PIMServiceProvider extends BaseServiceProvider
             $this->publishes([
                 __DIR__.'/../../assets/database/migrations' => database_path('migrations'),
             ], 'hris-saas::pim-migrations');
-
-            $path = realpath(__DIR__.'/../../assets/config/config.php');
-            
-            $this->mergeConfigFrom($path, 'hris-saas');
         }
+
+        $this->registerConfigs();
 
         Validator::registerValidators();
     }
@@ -37,6 +35,18 @@ class PIMServiceProvider extends BaseServiceProvider
     protected function registerMigrations(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../../assets/database/migrations');
+    }
+
+    /**
+     * Register PIM's config files.
+     *
+     * @return void
+     */
+    protected function registerConfigs(): void
+    {
+        $path = realpath(__DIR__.'/../../assets/config/config.php');
+
+        $this->mergeConfigFrom($path, 'hris-saas');
     }
 
     /**
