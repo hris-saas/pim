@@ -11,11 +11,7 @@ class TerminationReasonTest extends Test
     /** @test */
     public function can_add_a_termination_reason()
     {
-        $data = [
-            'name' => $this->faker->name,
-        ];
-
-        $response = $this->authApi('POST', 'api/termination-reasons', $data);
+        $response = $this->authApi('POST', 'api/termination-reasons', self::NAME);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -25,6 +21,14 @@ class TerminationReasonTest extends Test
                     'name',
                 ],
             ]);
+    }
+
+    /** @test */
+    public function cannot_add_or_update_a_department_with_same_name()
+    {
+        $response = $this->authApi('POST', 'api/termination-reasons', self::NAME);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /** @test */

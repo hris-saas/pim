@@ -11,11 +11,7 @@ class DivisionTest extends Test
     /** @test */
     public function can_add_a_division()
     {
-        $data = [
-            'name' => $this->faker->name,
-        ];
-
-        $response = $this->authApi('POST', 'api/divisions', $data);
+        $response = $this->authApi('POST', 'api/divisions', self::NAME);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -25,6 +21,14 @@ class DivisionTest extends Test
                     'name',
                 ],
             ]);
+    }
+
+    /** @test */
+    public function cannot_add_or_update_a_division_with_same_name()
+    {
+        $response = $this->authApi('POST', 'api/divisions', self::NAME);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /** @test */

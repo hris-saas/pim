@@ -29,4 +29,8 @@ class Test extends TestsCase
     public $config = ['auth.providers.users.model' => User::class, 'auth.guards.api.driver' => 'passport'];
 
     public $mockConsoleOutput = false;
+
+    public const NAME = [
+        'name' => 'Random Name',
+    ];
 }

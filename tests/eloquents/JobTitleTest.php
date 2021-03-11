@@ -11,11 +11,7 @@ class JobTitleTest extends Test
     /** @test */
     public function can_add_a_job_title()
     {
-        $data = [
-            'name' => $this->faker->name,
-        ];
-
-        $response = $this->authApi('POST', 'api/job-titles', $data);
+        $response = $this->authApi('POST', 'api/job-titles', self::NAME);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -25,6 +21,14 @@ class JobTitleTest extends Test
                     'name',
                 ],
             ]);
+    }
+
+    /** @test */
+    public function cannot_add_or_update_a_department_with_same_name()
+    {
+        $response = $this->authApi('POST', 'api/job-titles', self::NAME);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /** @test */

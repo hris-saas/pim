@@ -11,11 +11,7 @@ class RelationshipTest extends Test
     /** @test */
     public function can_add_a_relationship()
     {
-        $data = [
-            'name' => $this->faker->name,
-        ];
-
-        $response = $this->authApi('POST', 'api/relationships', $data);
+        $response = $this->authApi('POST', 'api/relationships', self::NAME);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
@@ -25,6 +21,14 @@ class RelationshipTest extends Test
                     'name',
                 ],
             ]);
+    }
+
+    /** @test */
+    public function cannot_add_or_update_a_department_with_same_name()
+    {
+        $response = $this->authApi('POST', 'api/relationships', self::NAME);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /** @test */
