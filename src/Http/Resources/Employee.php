@@ -43,7 +43,6 @@ class Employee extends JsonResource
             'started_at'         => Carbon::parse($this->started_at)->format('F d, Y'),
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
-            'deleted_at'         => $this->deleted_at,
         ];
     }
 }

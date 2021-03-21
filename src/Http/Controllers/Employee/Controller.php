@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use HRis\PIM\Http\Resources\Employee as Resource;
 use HRis\PIM\Http\Requests\EmployeeRequest as Request;
 use HRis\PIM\Http\Controllers\Controller as BaseController;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class Controller extends BaseController
 {
@@ -18,15 +17,36 @@ class Controller extends BaseController
      *
      * @param Request $request
      *
-     * @return AnonymousResourceCollection
+     * @return JsonResponse
      */
-    public function index(Request $request): AnonymousResourceCollection
+    public function index(Request $request)
     {
-        if ($this->perPage === 'all') {
-            return Resource::collection(Employee::get());
+        $query = Employee::query();
+
+        if ($orderBy = $request->query('orderBy')) {
+            $query->orderBy($orderBy);
         }
 
-        return Resource::collection(Employee::orderBy('id')->paginate($this->perPage));
+        $result = $this->perPage === 'all' ? $query->get() : $query->paginate($this->perPage);
+
+        if ($groupBy = $request->query('groupBy')) {
+            $data = [];
+            foreach ($result as $item) {
+                $column = $item->$groupBy;
+
+                $initial = substr($column, 0, 1);
+
+                $data[$initial][] = new Resource($item);
+            }
+
+            $paginated = $result->toArray();
+
+            $response = array_merge_recursive(['data' => $data], $this->paginationInformation($paginated));
+
+            return response()->json($response);
+        }
+
+        return Resource::collection($result);
     }
 
     /**
