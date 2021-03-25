@@ -91,6 +91,22 @@ class TerminationReasonTest extends Test
     }
 
     /** @test */
+    public function can_retrieve_all_termination_reasons_for_select()
+    {
+        $response = $this->authApi('GET', 'api/termination-reasons?isSelect');
+
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    [
+                        'id',
+                        'name',
+                    ],
+                ],
+            ]);
+    }
+
+    /** @test */
     public function can_retrieve_paginated_termination_reasons()
     {
         $response = $this->authApi('GET', 'api/termination-reasons');

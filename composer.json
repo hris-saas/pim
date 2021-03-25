@@ -38,7 +38,7 @@
         "hris-saas/core": "*"
     },
     "require-dev": {
-        "fzaninotto/faker": "^1.9.1",
+        "fakerphp/faker": "^1.9.1",
         "jaschilz/php-coverage-badger": "^2.0",
         "laravel/laravel": "^8.22.1",
         "phpunit/phpunit": "^9.3"

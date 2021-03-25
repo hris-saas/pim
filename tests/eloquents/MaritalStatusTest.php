@@ -74,7 +74,7 @@ class MaritalStatusTest extends Test
     }
 
     /** @test */
-    public function can_retrieve_all_marital_statuss()
+    public function can_retrieve_all_marital_statuses()
     {
         $response = $this->authApi('GET', 'api/marital-statuses?per_page=all');
 
@@ -91,7 +91,23 @@ class MaritalStatusTest extends Test
     }
 
     /** @test */
-    public function can_retrieve_paginated_marital_statuss()
+    public function can_retrieve_all_marital_statuses_for_select()
+    {
+        $response = $this->authApi('GET', 'api/marital-statuses?isSelect');
+
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    [
+                        'id',
+                        'name',
+                    ],
+                ],
+            ]);
+    }
+
+    /** @test */
+    public function can_retrieve_paginated_marital_statuses()
     {
         $response = $this->authApi('GET', 'api/marital-statuses');
 

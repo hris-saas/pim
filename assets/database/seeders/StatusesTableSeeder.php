@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use HRis\PIM\Eloquent\Status;
 use Illuminate\Database\Seeder;
-use HRis\ATS\Eloquent\Step;
 use Illuminate\Support\Facades\DB;
 
 class StatusesTableSeeder extends Seeder
@@ -19,35 +19,65 @@ class StatusesTableSeeder extends Seeder
 
         DB::table('statuses')->insert([
             [
-                'id'           => 1,
                 'parent_id'    => null,
                 'sort_order'   => 1,
-                'class'        => Step::class,
-                'name'         => 'Pending',
-                'is_completed' => 0,
+                'class'        => Status::class,
+                'name'  => json_encode([
+                    'en' => 'Active',
+                    'fr' => 'Activo',
+                    'nl' => 'Actief',
+                ]),
                 'created_at'   => now(),
                 'updated_at'   => now(),
             ],
             [
-                'id'           => 2,
                 'parent_id'    => null,
                 'sort_order'   => 2,
-                'class'        => Step::class,
-                'name'         => 'Reviewing',
-                'is_completed' => 0,
+                'class'        => Status::class,
+                'name'  => json_encode([
+                    'en' => 'Inactive',
+                    'fr' => 'Inactivo',
+                    'nl' => 'Inactief',
+                ]),
                 'created_at'   => now(),
                 'updated_at'   => now(),
             ],
-            [
-                'id'           => 3,
-                'parent_id'    => null,
-                'sort_order'   => 3,
-                'class'        => Step::class,
-                'name'         => 'Completed',
-                'is_completed' => 1,
-                'created_at'   => now(),
-                'updated_at'   => now(),
-            ],
+//            [
+//                'parent_id'    => null,
+//                'sort_order'   => 3,
+//                'class'        => Step::class,
+//                'name'         => 'Completed',
+//                'is_completed' => 1,
+//                'created_at'   => now(),
+//                'updated_at'   => now(),
+//            ],
+//            [
+//                'parent_id'    => null,
+//                'sort_order'   => 1,
+//                'class'        => Step::class,
+//                'name'         => 'Pending',
+//                'is_completed' => 0,
+//                'created_at'   => now(),
+//                'updated_at'   => now(),
+//            ],
+//            [
+//                'parent_id'    => null,
+//                'sort_order'   => 2,
+//                'class'        => Step::class,
+//                'name'         => 'Reviewing',
+//                'is_completed' => 0,
+//                'created_at'   => now(),
+//                'updated_at'   => now(),
+//            ],
+//            [
+//                'parent_id'    => null,
+//                'sort_order'   => 3,
+//                'class'        => Step::class,
+//                'name'         => 'Completed',
+//                'is_completed' => 1,
+//                'created_at'   => now(),
+//                'updated_at'   => now(),
+//            ],
         ]);
     }
 }

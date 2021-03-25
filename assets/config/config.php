@@ -1,11 +1,13 @@
 <?php
 
+use HRis\PIM\Eloquent\Status;
 use HRis\PIM\Eloquent\PayType;
 use HRis\PIM\Eloquent\Division;
 use HRis\PIM\Eloquent\JobTitle;
 use HRis\PIM\Eloquent\Location;
 use HRis\PIM\Eloquent\PayPeriod;
 use HRis\PIM\Eloquent\Department;
+use HRis\PIM\Eloquent\ChangeReason;
 use HRis\PIM\Eloquent\Relationship;
 use HRis\PIM\Eloquent\MaritalStatus;
 use HRis\PIM\Eloquent\EmploymentStatus;
@@ -23,6 +25,7 @@ return [
     'models' => [
 
         'employee-fields' => [
+            'change-reasons'      => ChangeReason::class,
             'departments'         => Department::class,
             'divisions'           => Division::class,
             'job-titles'          => JobTitle::class,
@@ -34,6 +37,7 @@ return [
         ],
 
         'statuses' => [
+            'statuses'            => Status::class,
             'employment-statuses' => EmploymentStatus::class,
             'marital-statuses'    => MaritalStatus::class,
         ],
@@ -132,5 +136,5 @@ return [
         'pim::termination-reason.update',
         'pim::termination-reason.destroy',
         'pim::termination-reason.restore',
-    ]
+    ],
 ];

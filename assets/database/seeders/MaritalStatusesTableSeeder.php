@@ -15,42 +15,42 @@ class MaritalStatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('employee_fields')->where('class', MaritalStatus::class)->delete();
+        DB::table('statuses')->where('class', MaritalStatus::class)->delete();
 
-        DB::table('employee_fields')->insert(
+        DB::table('statuses')->insert(
             [
                 [
                     'class' => MaritalStatus::class,
                     'name'  => json_encode([
                         'en' => 'Single',
                         'fr' => 'Célibataire',
-                        'nl' => 'alleenstaand'
+                        'nl' => 'alleenstaand',
                     ]),
                     'sort_order' => 1,
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
                 ],
                 [
                     'class' => MaritalStatus::class,
                     'name'  => json_encode([
                         'en' => 'Married',
                         'fr' => 'Marié',
-                        'nl' => 'Getrouwd'
+                        'nl' => 'Getrouwd',
                     ]),
                     'sort_order' => 2,
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
                 ],
                 [
                     'class' => MaritalStatus::class,
                     'name'  => json_encode([
                         'en' => 'Other',
                         'fr' => 'Autre',
-                        'nl' => 'Andere'
+                        'nl' => 'Andere',
                     ]),
                     'sort_order' => 3,
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
                 ],
             ]
         );

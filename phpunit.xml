@@ -22,7 +22,23 @@
       <exclude>./tests/unit-tests/InstallationTest.php</exclude>
     </testsuite>
     <testsuite name="Continued Test Suite">
-      <directory suffix=".php">./tests/eloquents/</directory>
+        <file>./tests/eloquents/AddressTest.php</file>
+        <file>./tests/eloquents/ChangeReasonTest.php</file>
+        <file>./tests/eloquents/CompensationTest.php</file>
+        <file>./tests/eloquents/DepartmentTest.php</file>
+        <file>./tests/eloquents/DivisionTest.php</file>
+        <file>./tests/eloquents/EmergencyContactTest.php</file>
+        <file>./tests/eloquents/EmployeeEmploymentStatusTest.php</file>
+        <file>./tests/eloquents/EmploymentStatusTest.php</file>
+        <file>./tests/eloquents/JobTest.php</file>
+        <file>./tests/eloquents/JobTitleTest.php</file>
+        <file>./tests/eloquents/LocationTest.php</file>
+        <file>./tests/eloquents/MaritalStatusTest.php</file>
+        <file>./tests/eloquents/PayPeriodTest.php</file>
+        <file>./tests/eloquents/PayTypeTest.php</file>
+        <file>./tests/eloquents/RelationshipTest.php</file>
+        <file>./tests/eloquents/TerminationReasonTest.php</file>
+        <file>./tests/eloquents/EmployeeTest.php</file>
     </testsuite>
   </testsuites>
   <logging>

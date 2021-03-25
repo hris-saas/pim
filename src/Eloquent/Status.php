@@ -9,21 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EmployeeField extends Model
+class Status extends Model
 {
     use HasClass, HasMovingForward, HasSortOrder, HasTranslations, SoftDeletes;
-
-    public static array $fields = [
-        'change-reasons'      => ChangeReason::class,
-        'departments'         => Department::class,
-        'divisions'           => Division::class,
-        'job-titles'          => JobTitle::class,
-        'locations'           => Location::class,
-        'pay-periods'         => PayPeriod::class,
-        'pay-types'           => PayType::class,
-        'relationships'       => Relationship::class,
-        'termination-reasons' => TerminationReason::class,
-    ];
 
     public $translatable = ['name'];
 
@@ -39,12 +27,12 @@ class EmployeeField extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'sort_order', 'name', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id', 'parent_id', 'sort_order', 'class', 'name', 'is_completed', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'employee_fields';
+    protected $table = 'statuses';
 }

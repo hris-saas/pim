@@ -2,7 +2,6 @@
 
 namespace HRis\PIM\Http\Controllers\Employee;
 
-use Ramsey\Uuid\Uuid;
 use HRis\PIM\Eloquent\Employee;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +24,10 @@ class Controller extends BaseController
 
         if ($orderBy = $request->query('orderBy')) {
             $query->orderBy($orderBy);
+        }
+
+        if ($request->query->has('isSelect')) {
+            $query = $query->select('id', 'first_name', 'last_name', 'work_email');
         }
 
         $result = $this->perPage === 'all' ? $query->get() : $query->paginate($this->perPage);
@@ -71,11 +74,7 @@ class Controller extends BaseController
      */
     public function store(Request $request): Resource
     {
-        $data = $request->all();
-
-        $data['uuid'] = Uuid::uuid4();
-
-        $employee = Employee::create($data);
+        $employee = Employee::transactionSafeCreate($request->all() + ['user_id' => $request->user()->id]);
 
         return new Resource($employee);
     }

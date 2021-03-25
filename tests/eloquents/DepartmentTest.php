@@ -91,6 +91,22 @@ class DepartmentTest extends Test
     }
 
     /** @test */
+    public function can_retrieve_all_departments_for_select()
+    {
+        $response = $this->authApi('GET', 'api/departments?isSelect');
+
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    [
+                        'id',
+                        'name',
+                    ],
+                ],
+            ]);
+    }
+
+    /** @test */
     public function can_retrieve_paginated_departments()
     {
         $response = $this->authApi('GET', 'api/departments');

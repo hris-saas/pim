@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use HRis\Core\Http\Controllers\StatusController;
+use HRis\PIM\Http\Controllers\StatusController;
 
 // guest
 Route::group(['middleware' => 'guest:api'], function () {
@@ -10,6 +10,14 @@ Route::group(['middleware' => 'guest:api'], function () {
 
 // auth
 Route::group(['middleware' => ['auth:api']], function () {
+
+    // api/statuses
+    Route::get('statuses', [StatusController::class, 'index'])->name('status.index');                                                                        // postman
+    Route::get('statuses/{status}', [StatusController::class, 'show'])->name('status.show');                                                                 // postman
+    Route::post('statuses', [StatusController::class, 'store'])->name('status.store');                                                                       // postman
+    Route::patch('statuses/{status}', [StatusController::class, 'update'])->name('status.update');                                                           // postman
+    Route::delete('statuses/{status}', [StatusController::class, 'destroy'])->name('status.destroy');                                                        // postman
+    Route::patch('statuses/{status}/restore', [StatusController::class, 'restore'])->name('status.restore');                                                 // postman
 
     // api/employment-statuses
     Route::get('employment-statuses', [StatusController::class, 'index'])->name('employment-status.index');                                                  // postman

@@ -4,11 +4,11 @@ namespace HRis\PIM\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use HRis\PIM\Http\Resources\EmployeeField as Resource;
-use HRis\PIM\Http\Requests\EmployeeFieldRequest as Request;
+use HRis\PIM\Http\Resources\Status as Resource;
+use HRis\PIM\Http\Requests\StatusRequest as Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class EmployeeFieldController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -108,7 +108,6 @@ class EmployeeFieldController extends Controller
     public function restore(Request $request): JsonResponse
     {
         $record = (new $request->model_type)::withTrashed()->whereNotNull('deleted_at')->findOrFail($request->model_id);
-
         $record->restore();
 
         return response()->json(['status' => trans('core::app.restore_resource_successful')], Response::HTTP_OK);

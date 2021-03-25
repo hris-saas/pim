@@ -22,9 +22,25 @@ class PIMServiceProvider extends BaseServiceProvider
             ], 'hris-saas::pim-migrations');
         }
 
+        $this->registerTranslations();
+
         $this->registerConfigs();
 
         Validator::registerValidators();
+    }
+
+    /**
+     * Register Auth's translation files.
+     *
+     * @return void
+     */
+    protected function registerTranslations(): void
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../../assets/lang', 'pim');
+
+        $this->publishes([
+            __DIR__.'/../../assets/lang' => resource_path('lang/vendor/hris-saas/pim'),
+        ], 'hris-saas::pim-translations');
     }
 
     /**

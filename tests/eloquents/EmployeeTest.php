@@ -3,7 +3,15 @@
 namespace HRis\PIM\Tests\Eloquents;
 
 use HRis\PIM\Tests\Test;
+use HRis\PIM\Eloquent\PayType;
 use HRis\PIM\Eloquent\Employee;
+use HRis\PIM\Eloquent\JobTitle;
+use HRis\PIM\Eloquent\Location;
+use HRis\PIM\Eloquent\PayPeriod;
+use HRis\PIM\Eloquent\Department;
+use HRis\PIM\Eloquent\ChangeReason;
+use HRis\PIM\Eloquent\MaritalStatus;
+use HRis\PIM\Eloquent\EmploymentStatus;
 use Symfony\Component\HttpFoundation\Response;
 
 class EmployeeTest extends Test
@@ -12,8 +20,42 @@ class EmployeeTest extends Test
     public function can_add_an_employee()
     {
         $data = [
-            'first_name' => $this->faker->firstName,
-            'last_name'  => $this->faker->lastName,
+            'first_name'           => $this->faker->firstName,
+            'last_name'            => $this->faker->lastName,
+            'gender'               => 'm',
+            'department_id'        => null,
+            'location_id'          => Location::first()->id,
+            'job_title_id'         => JobTitle::first()->id,
+            'is_active'            => true,
+            'marital_status_id'    => MaritalStatus::first()->id,
+            'employment_status_id' => EmploymentStatus::first()->id,
+            'employee_no'          => $this->faker->word,
+            'date_of_birth' => [
+                'day'   => rand(1, 31),
+                'month' => rand(1, 12),
+                'year'  => '2000',
+            ],
+            'date_of_start' => [
+                'day'   => rand(1, 31),
+                'month' => rand(1, 12),
+                'year'  => '2000',
+            ],
+            'addresses' => [
+                [
+                    'address_1' => $this->faker->streetAddress(),
+                    'city'      => $this->faker->city(),
+                    'country'   => $this->faker->country(),
+                ],
+            ],
+            'mobile_phone'     => $this->faker->e164PhoneNumber(),
+            'work_email'       => $this->faker->safeEmail(),
+            'pay_value'        => 1000,
+            'pay_rate'         => 'year',
+            'currency'         => 'usd',
+            'pay_type_id'      => PayType::first()->id,
+            'pay_period_id'    => PayPeriod::first()->id,
+            'change_reason_id' => ChangeReason::first()->id,
+            'is_ess_on'        => true,
         ];
 
         $response = $this->authApi('POST', 'api/employees', $data);
@@ -21,29 +63,20 @@ class EmployeeTest extends Test
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
                 'data' => [
-                    'id',
                     'uuid',
                     'first_name',
-                    'middle_name',
                     'last_name',
-                    'salutation',
-                    'nickname',
                     'employee_no',
                     'date_of_birth',
-                    'identity_no',
+                    'employee_no',
                     'gender',
                     'addresses',
                     'work_email',
-                    'personal_email',
-                    'work_phone',
-                    'work_phone_ext',
                     'mobile_phone',
-                    'home_phone',
                     'is_active',
                     'started_at',
                     'created_at',
                     'updated_at',
-                    'deleted_at',
                 ],
             ]);
     }
@@ -62,7 +95,7 @@ class EmployeeTest extends Test
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'data' => [
-                    'id',
+                    'uuid',
                     'first_name',
                     'middle_name',
                     'last_name',
@@ -72,7 +105,6 @@ class EmployeeTest extends Test
                     'date_of_birth',
                     'identity_no',
                     'gender',
-                    'addresses',
                     'work_email',
                     'personal_email',
                     'work_phone',
@@ -83,7 +115,6 @@ class EmployeeTest extends Test
                     'started_at',
                     'created_at',
                     'updated_at',
-                    'deleted_at',
                 ],
             ]);
 
@@ -101,7 +132,7 @@ class EmployeeTest extends Test
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'data' => [
-                    'id',
+                    'uuid',
                     'first_name',
                     'middle_name',
                     'last_name',
@@ -111,7 +142,6 @@ class EmployeeTest extends Test
                     'date_of_birth',
                     'identity_no',
                     'gender',
-                    'addresses',
                     'work_email',
                     'personal_email',
                     'work_phone',
@@ -122,7 +152,6 @@ class EmployeeTest extends Test
                     'started_at',
                     'created_at',
                     'updated_at',
-                    'deleted_at',
                 ],
             ]);
 
@@ -138,7 +167,7 @@ class EmployeeTest extends Test
             ->assertJsonStructure([
                 'data' => [
                     [
-                        'id',
+                        'uuid',
                         'first_name',
                         'middle_name',
                         'last_name',
@@ -146,7 +175,6 @@ class EmployeeTest extends Test
                         'nickname',
                         'employee_no',
                         'date_of_birth',
-                        'identity_no',
                         'gender',
                         'addresses',
                         'work_email',
@@ -159,7 +187,6 @@ class EmployeeTest extends Test
                         'started_at',
                         'created_at',
                         'updated_at',
-                        'deleted_at',
                     ],
                 ],
             ]);
@@ -174,7 +201,7 @@ class EmployeeTest extends Test
             ->assertJsonStructure([
                 'data' => [
                     [
-                        'id',
+                        'uuid',
                         'first_name',
                         'middle_name',
                         'last_name',
@@ -184,7 +211,6 @@ class EmployeeTest extends Test
                         'date_of_birth',
                         'identity_no',
                         'gender',
-                        'addresses',
                         'work_email',
                         'personal_email',
                         'work_phone',
@@ -195,7 +221,6 @@ class EmployeeTest extends Test
                         'started_at',
                         'created_at',
                         'updated_at',
-                        'deleted_at',
                     ],
                 ],
                 'links' => [
@@ -283,7 +308,7 @@ class EmployeeTest extends Test
 
                 'data' => [
                     [
-                        'id',
+                        'uuid',
                         'first_name',
                         'middle_name',
                         'last_name',
@@ -293,7 +318,6 @@ class EmployeeTest extends Test
                         'date_of_birth',
                         'identity_no',
                         'gender',
-                        'addresses',
                         'work_email',
                         'personal_email',
                         'work_phone',
@@ -304,7 +328,6 @@ class EmployeeTest extends Test
                         'started_at',
                         'created_at',
                         'updated_at',
-                        'deleted_at',
                     ],
                 ],
                 'links' => [
@@ -345,7 +368,7 @@ class EmployeeTest extends Test
 
                 'data' => [
                     [
-                        'id',
+                        'uuid',
                         'first_name',
                         'middle_name',
                         'last_name',
@@ -355,7 +378,6 @@ class EmployeeTest extends Test
                         'date_of_birth',
                         'identity_no',
                         'gender',
-                        'addresses',
                         'work_email',
                         'personal_email',
                         'work_phone',
@@ -366,7 +388,6 @@ class EmployeeTest extends Test
                         'started_at',
                         'created_at',
                         'updated_at',
-                        'deleted_at',
                     ],
                 ],
                 'links' => [
@@ -385,5 +406,13 @@ class EmployeeTest extends Test
                     'total',
                 ],
             ]);
+    }
+
+    /** @test */
+    public function can_get_employee_for_directory()
+    {
+        $response = $this->authApi('GET', 'api/employees?isSelect&orderBy=last_name&groupBy=last_name');
+
+        $response->assertStatus(200);
     }
 }

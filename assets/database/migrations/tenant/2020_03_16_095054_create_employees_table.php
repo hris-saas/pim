@@ -50,7 +50,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('department_id')->references('id')->on('employee_fields')->onDelete('set null');
             $table->foreign('location_id')->references('id')->on('employee_fields')->onDelete('set null');
-            $table->foreign('marital_status_id')->references('id')->on('employee_fields')->onDelete('set null');
+            $table->foreign('marital_status_id')->references('id')->on('statuses')->onDelete('set null');
             $table->foreign('termination_reason_id')->references('id')->on('employee_fields')->onDelete('set null');
             $table->foreign('reports_to_id')->references('id')->on('employees')->onDelete('set null');
         });

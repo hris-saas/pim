@@ -17,6 +17,10 @@ class ExistsFieldValidator implements ValidatorInterface
     public function extend(): void
     {
         Validator::extend('exists_field', function ($attribute, $value, $parameters, $validator) {
+            if (! $value) {
+                return true;
+            }
+
             [$model, $column] = $parameters;
 
             return (new $model())::where($column, $value)->first();

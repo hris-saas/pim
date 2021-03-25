@@ -16,7 +16,7 @@ class Employee extends JsonResource
      */
     public function toArray($request): array
     {
-        return [
+        return array_filter([
             'id'                 => $this->id,
             'uuid'               => $this->uuid,
             'first_name'         => $this->first_name,
@@ -28,7 +28,7 @@ class Employee extends JsonResource
             'date_of_birth'      => $this->date_of_birth,
             'identity_no'        => $this->identity_no,
             'gender'             => $this->gender,
-            'addresses'          => Address::collection($this->addresses),
+            'addresses'          => $this->when($this->addresses->count(), Address::collection($this->addresses)),
             'department'         => $this->when($this->department, optional($this->department)->name),
             'location'           => $this->when($this->location, optional($this->location)->name),
             'marital_status'     => $this->when($this->maritalStatus, optional($this->maritalStatus)->name),
@@ -43,6 +43,6 @@ class Employee extends JsonResource
             'started_at'         => Carbon::parse($this->started_at)->format('F d, Y'),
             'created_at'         => $this->created_at,
             'updated_at'         => $this->updated_at,
-        ];
+        ]);
     }
 }

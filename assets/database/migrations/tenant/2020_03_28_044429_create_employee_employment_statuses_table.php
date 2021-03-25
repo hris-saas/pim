@@ -25,7 +25,7 @@ class CreateEmployeeEmploymentStatusesTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
-            $table->foreign('employment_status_id')->references('id')->on('employee_fields')->onDelete('set null');
+            $table->foreign('employment_status_id')->references('id')->on('statuses')->onDelete('set null');
         });
     }
 

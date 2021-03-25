@@ -2,11 +2,11 @@
 
 namespace HRis\PIM\Eloquent;
 
-use Database\Factories\MaritalStatusFactory;
+use Database\Factories\ChangeReasonFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class MaritalStatus extends Status
+class ChangeReason extends EmployeeField
 {
     use HasFactory;
 
@@ -24,6 +24,6 @@ class MaritalStatus extends Status
      */
     protected static function newFactory(): Factory
     {
-        return MaritalStatusFactory::new();
+        return ChangeReasonFactory::new();
     }
 }

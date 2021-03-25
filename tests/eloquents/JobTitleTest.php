@@ -91,6 +91,22 @@ class JobTitleTest extends Test
     }
 
     /** @test */
+    public function can_retrieve_all_job_titles_for_select()
+    {
+        $response = $this->authApi('GET', 'api/job-titles?isSelect');
+
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    [
+                        'id',
+                        'name',
+                    ],
+                ],
+            ]);
+    }
+
+    /** @test */
     public function can_retrieve_paginated_job_titles()
     {
         $response = $this->authApi('GET', 'api/job-titles');

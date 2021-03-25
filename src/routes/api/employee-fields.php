@@ -19,6 +19,14 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::delete('departments/{department}', [EmployeeFieldController::class, 'destroy'])->name('department.destroy');                                      // postman
     Route::patch('departments/{department}/restore', [EmployeeFieldController::class, 'restore'])->name('department.restore');                               // postman
 
+    // api/change-reasons
+    Route::get('change-reasons', [EmployeeFieldController::class, 'index'])->name('change-reason.index');                                                          // postman
+    Route::get('change-reasons/{changeReason}', [EmployeeFieldController::class, 'show'])->name('change-reason.show');                                               // postman
+    Route::post('change-reasons', [EmployeeFieldController::class, 'store'])->name('change-reason.store');                                                         // postman
+    Route::patch('change-reasons/{changeReason}', [EmployeeFieldController::class, 'update'])->name('change-reason.update');                                         // postman
+    Route::delete('change-reasons/{changeReason}', [EmployeeFieldController::class, 'destroy'])->name('change-reason.destroy');                                      // postman
+    Route::patch('change-reasons/{changeReason}/restore', [EmployeeFieldController::class, 'restore'])->name('change-reason.restore');                               // postman
+
     // api/locations
     Route::get('locations', [EmployeeFieldController::class, 'index'])->name('location.index');                                                              // postman
     Route::get('locations/{location}', [EmployeeFieldController::class, 'show'])->name('location.show');                                                     // postman

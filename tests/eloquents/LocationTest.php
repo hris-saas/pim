@@ -91,6 +91,22 @@ class LocationTest extends Test
     }
 
     /** @test */
+    public function can_retrieve_all_locations_for_select()
+    {
+        $response = $this->authApi('GET', 'api/locations?isSelect');
+
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    [
+                        'id',
+                        'name',
+                    ],
+                ],
+            ]);
+    }
+
+    /** @test */
     public function can_retrieve_paginated_locations()
     {
         $response = $this->authApi('GET', 'api/locations');

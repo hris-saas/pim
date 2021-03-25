@@ -91,6 +91,22 @@ class RelationshipTest extends Test
     }
 
     /** @test */
+    public function can_retrieve_all_relationships_for_select()
+    {
+        $response = $this->authApi('GET', 'api/relationships?isSelect');
+
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    [
+                        'id',
+                        'name',
+                    ],
+                ],
+            ]);
+    }
+
+    /** @test */
     public function can_retrieve_paginated_relationships()
     {
         $response = $this->authApi('GET', 'api/relationships');
