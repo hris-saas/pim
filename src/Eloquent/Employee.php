@@ -33,6 +33,8 @@ class Employee extends Baum\Node
      */
     protected $fillable = ['uuid', 'user_id', 'department_id', 'location_id', 'marital_status_id', 'termination_reason_id', 'first_name', 'middle_name', 'last_name', 'salutation', 'nickname', 'employee_no', 'date_of_birth', 'identity_no', 'gender', 'work_phone', 'work_phone_ext', 'mobile_phone', 'home_phone', 'work_email', 'personal_email', 'avatar', 'is_active', 'reports_to_id', 'started_at', 'termination_performed_at', 'terminated_at', 'created_at', 'updated_at', 'deleted_at'];
 
+    protected $with = ['department'];
+
     /**
      * Create a new factory instance for the model.
      *
@@ -161,6 +163,11 @@ class Employee extends Baum\Node
     public function indirectReports()
     {
         return $this->descendants();
+    }
+
+    public function reportsTo()
+    {
+        return $this->belongsTo(Employee::class, 'reports_to_id');
     }
 
     public static function transactionSafeCreate(array $data): self

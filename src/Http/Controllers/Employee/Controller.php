@@ -37,7 +37,7 @@ class Controller extends BaseController
             foreach ($result as $item) {
                 $column = $item->$groupBy;
 
-                $initial = substr($column, 0, 1);
+                $initial = strtoupper(substr($column, 0, 1));
 
                 $data[$initial][] = new Resource($item);
             }
