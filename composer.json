@@ -18,20 +18,12 @@
         "issues": "https://gitlab.com/hris-saas/bugs/issues",
         "source": "https://gitlab.com/hris-saas/pim"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../auth"
-        },
-        {
-            "type": "path",
-            "url": "../baum"
-        },
-        {
-            "type": "path",
-            "url": "../core"
+    "repositories": {
+        "gitlab.com/6899303": {
+            "type": "composer",
+            "url": "https://gitlab.com/api/v4/group/6899303/-/packages/composer/packages.json"
         }
-    ],
+    },
     "require": {
         "hris-saas/auth": "*",
         "hris-saas/baum": "*",
