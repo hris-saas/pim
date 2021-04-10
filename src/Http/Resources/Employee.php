@@ -30,6 +30,7 @@ class Employee extends JsonResource
             'gender'             => $this->gender,
             'addresses'          => $this->when($this->addresses->count(), Address::collection($this->addresses)),
             'department'         => $this->when($this->department, $this->department),
+            'job'                => $this->when($this->job, new Job($this->job)),
             'location'           => $this->when($this->location, $this->location),
             'marital_status'     => $this->when($this->maritalStatus, $this->maritalStatus),
             'termination_reason' => $this->when($this->terminationReason, $this->terminationReason),

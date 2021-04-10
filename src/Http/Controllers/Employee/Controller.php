@@ -20,15 +20,7 @@ class Controller extends BaseController
      */
     public function index(Request $request)
     {
-        $query = Employee::query();
-
-        if ($orderBy = $request->query('orderBy')) {
-            $query->orderBy($orderBy);
-        }
-
-        if ($request->query->has('isSelect')) {
-            $query = $query->select('id', 'first_name', 'last_name', 'work_email');
-        }
+        $query = Employee::processQuery($request);
 
         $result = $this->perPage === 'all' ? $query->get() : $query->paginate($this->perPage);
 

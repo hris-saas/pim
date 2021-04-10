@@ -11,7 +11,10 @@ use HRis\PIM\Traits\UsesBaum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Database\Factories\EmployeeFactory;
+use Illuminate\Database\Eloquent\Builder;
+use HRis\PIM\Http\Requests\EmployeeRequest;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -130,6 +133,14 @@ class Employee extends Baum\Node
     }
 
     /**
+     * Latest Job that his model has.
+     */
+    public function job(): HasOne
+    {
+        return $this->hasOne(Job::class)->latest('effective_at');
+    }
+
+    /**
      * EmergencyContacts that this model has.
      */
     public function emergencyContacts(): HasMany
@@ -168,6 +179,29 @@ class Employee extends Baum\Node
     public function reportsTo()
     {
         return $this->belongsTo(Employee::class, 'reports_to_id');
+    }
+
+    public static function processQuery(EmployeeRequest $request): Builder
+    {
+        $query = self::query();
+
+        if ($orderBy = $request->query('orderBy')) {
+            $query->orderBy($orderBy);
+        }
+
+        if ($request->query->has('isSelect')) {
+            $query = $query->select('id', 'first_name', 'last_name', 'work_email');
+        }
+
+        if ($request->has('status')) {
+            $isActive = $request->get('status');
+
+            if ($isActive != 'all') {
+                $query = $query->where('is_active', $isActive);
+            }
+        }
+
+        return $query;
     }
 
     public static function transactionSafeCreate(array $data): self
