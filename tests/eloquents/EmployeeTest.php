@@ -415,4 +415,12 @@ class EmployeeTest extends Test
 
         $response->assertStatus(200);
     }
+
+    /** @test */
+    public function can_get_all_employees_with_status()
+    {
+        $response = $this->authApi('GET', 'api/employees?status=1');
+
+        $response->assertStatus(200);
+    }
 }

@@ -14,7 +14,7 @@ class AddUuidColumnToEmployeesTable extends Migration
     public function up()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->uuid('uuid')->after('id');
+            $table->uuid('uuid')->nullable()->after('id');
         });
     }
 

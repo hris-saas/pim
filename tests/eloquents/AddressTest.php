@@ -37,6 +37,13 @@ class AddressTest extends Test
                     'country',
                 ],
             ]);
+
+        $this->assertEquals($response->getData()->data->address_1, $data['address_1']);
+        $this->assertEquals($response->getData()->data->address_2, $data['address_2']);
+        $this->assertEquals($response->getData()->data->city, $data['city']);
+        $this->assertEquals($response->getData()->data->state, $data['state']);
+        $this->assertEquals($response->getData()->data->postal_code, $data['postal_code']);
+        $this->assertEquals($response->getData()->data->country, $data['country']);
     }
 
     /** @test */
@@ -123,6 +130,13 @@ class AddressTest extends Test
                     ],
                 ],
             ]);
+
+        $this->assertEquals($response->getData()->data[0]->address_1, $address->address_1);
+        $this->assertEquals($response->getData()->data[0]->address_2, $address->address_2);
+        $this->assertEquals($response->getData()->data[0]->city, $address->city);
+        $this->assertEquals($response->getData()->data[0]->state, $address->state);
+        $this->assertEquals($response->getData()->data[0]->postal_code, $address->postal_code);
+        $this->assertEquals($response->getData()->data[0]->country, $address->country);
     }
 
     /** @test */

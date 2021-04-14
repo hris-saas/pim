@@ -19,6 +19,18 @@
         "source": "https://gitlab.com/hris-saas/pim"
     },
     "repositories": {
+        "auth": {
+            "type": "path",
+            "url": "../auth"
+        },
+        "baum": {
+            "type": "path",
+            "url": "../baum"
+        },
+        "core": {
+            "type": "path",
+            "url": "../core"
+        },
         "gitlab.com/6899303": {
             "type": "composer",
             "url": "https://gitlab.com/api/v4/group/6899303/-/packages/composer/packages.json"

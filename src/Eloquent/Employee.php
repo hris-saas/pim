@@ -4,10 +4,12 @@ namespace HRis\PIM\Eloquent;
 
 use HRis\Baum;
 use Ramsey\Uuid\Uuid;
+use Carbon\CarbonInterval;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use HRis\Auth\Eloquent\User;
 use HRis\PIM\Traits\UsesBaum;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Database\Factories\EmployeeFactory;
@@ -56,6 +58,21 @@ class Employee extends Baum\Node
     public function getRouteKeyName()
     {
         return 'uuid';
+    }
+
+    public function getStartedAtForDisplayAttribute()
+    {
+        $startedAt = Carbon::parse($this->started_at);
+
+        $now = now();
+
+        $years  = $startedAt->diffInYears($now);
+        $months = $startedAt->diffInMonths($now->subYears($years));
+
+        return [
+            'default' => $startedAt->isoFormat('MMMM Y'),
+            'custom'  => CarbonInterval::years($years)->months($months)->forHumans(),
+        ];
     }
 
     /**
