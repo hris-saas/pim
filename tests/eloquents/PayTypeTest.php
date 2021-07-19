@@ -24,8 +24,14 @@ class PayTypeTest extends Test
     }
 
     /** @test */
-    public function cannot_add_or_update_a_department_with_same_name()
+    public function cannot_add_or_update_a_pay_type_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        PayType::create($data);
+
         $response = $this->authApi('POST', 'api/pay-types', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class PayTypeTest extends Test
     /** @test */
     public function can_retrieve_all_pay_types()
     {
+        PayType::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/pay-types?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class PayTypeTest extends Test
     /** @test */
     public function can_retrieve_all_pay_types_for_select()
     {
+        PayType::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/pay-types?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class PayTypeTest extends Test
     /** @test */
     public function can_retrieve_paginated_pay_types()
     {
+        PayType::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/pay-types');
 
         $response->assertStatus(Response::HTTP_OK)

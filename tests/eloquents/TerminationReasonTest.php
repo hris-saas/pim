@@ -24,8 +24,14 @@ class TerminationReasonTest extends Test
     }
 
     /** @test */
-    public function cannot_add_or_update_a_department_with_same_name()
+    public function cannot_add_or_update_a_termination_reason_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        TerminationReason::create($data);
+
         $response = $this->authApi('POST', 'api/termination-reasons', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class TerminationReasonTest extends Test
     /** @test */
     public function can_retrieve_all_termination_reasons()
     {
+        TerminationReason::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/termination-reasons?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class TerminationReasonTest extends Test
     /** @test */
     public function can_retrieve_all_termination_reasons_for_select()
     {
+        TerminationReason::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/termination-reasons?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class TerminationReasonTest extends Test
     /** @test */
     public function can_retrieve_paginated_termination_reasons()
     {
+        TerminationReason::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/termination-reasons');
 
         $response->assertStatus(Response::HTTP_OK)

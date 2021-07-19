@@ -165,6 +165,8 @@ class JobTest extends Test
         $employee = Employee::factory()->create();
         $reportsTo = Employee::factory()->create();
 
+        $this->createUser();
+
         $job = Job::factory()->create([
             'user_id'       => 1,
             'employee_id'   => $employee->id,

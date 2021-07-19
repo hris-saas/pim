@@ -26,6 +26,12 @@ class DivisionTest extends Test
     /** @test */
     public function cannot_add_or_update_a_division_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        Division::create($data);
+
         $response = $this->authApi('POST', 'api/divisions', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class DivisionTest extends Test
     /** @test */
     public function can_retrieve_all_divisions()
     {
+        Division::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/divisions?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class DivisionTest extends Test
     /** @test */
     public function can_retrieve_all_divisions_for_select()
     {
+        Division::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/divisions?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class DivisionTest extends Test
     /** @test */
     public function can_retrieve_paginated_divisions()
     {
+        Division::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/divisions');
 
         $response->assertStatus(Response::HTTP_OK)

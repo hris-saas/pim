@@ -24,8 +24,14 @@ class MaritalStatusTest extends Test
     }
 
     /** @test */
-    public function cannot_add_or_update_a_department_with_same_name()
+    public function cannot_add_or_update_a_marital_status_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        MaritalStatus::create($data);
+
         $response = $this->authApi('POST', 'api/marital-statuses', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class MaritalStatusTest extends Test
     /** @test */
     public function can_retrieve_all_marital_statuses()
     {
+        MaritalStatus::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/marital-statuses?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class MaritalStatusTest extends Test
     /** @test */
     public function can_retrieve_all_marital_statuses_for_select()
     {
+        MaritalStatus::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/marital-statuses?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class MaritalStatusTest extends Test
     /** @test */
     public function can_retrieve_paginated_marital_statuses()
     {
+        MaritalStatus::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/marital-statuses');
 
         $response->assertStatus(Response::HTTP_OK)

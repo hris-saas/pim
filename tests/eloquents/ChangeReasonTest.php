@@ -26,6 +26,12 @@ class ChangeReasonTest extends Test
     /** @test */
     public function cannot_add_or_update_a_change_reason_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        ChangeReason::create($data);
+
         $response = $this->authApi('POST', 'api/change-reasons', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class ChangeReasonTest extends Test
     /** @test */
     public function can_retrieve_all_change_reasons()
     {
+        ChangeReason::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/change-reasons?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class ChangeReasonTest extends Test
     /** @test */
     public function can_retrieve_all_change_reasons_for_select()
     {
+        ChangeReason::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/change-reasons?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class ChangeReasonTest extends Test
     /** @test */
     public function can_retrieve_paginated_change_reasons()
     {
+        ChangeReason::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/change-reasons');
 
         $response->assertStatus(Response::HTTP_OK)

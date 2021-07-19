@@ -72,6 +72,8 @@ class EmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_all_employment_statuses()
     {
+        EmploymentStatus::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/employment-statuses?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -89,6 +91,8 @@ class EmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_all_employment_statuses_for_select()
     {
+        EmploymentStatus::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/employment-statuses?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -105,6 +109,8 @@ class EmploymentStatusTest extends Test
     /** @test */
     public function can_retrieve_paginated_employment_statuses()
     {
+        EmploymentStatus::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/employment-statuses');
 
         $response->assertStatus(Response::HTTP_OK)

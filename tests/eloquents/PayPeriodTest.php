@@ -24,8 +24,14 @@ class PayPeriodTest extends Test
     }
 
     /** @test */
-    public function cannot_add_or_update_a_department_with_same_name()
+    public function cannot_add_or_update_a_pay_period_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        PayPeriod::create($data);
+
         $response = $this->authApi('POST', 'api/pay-periods', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class PayPeriodTest extends Test
     /** @test */
     public function can_retrieve_all_pay_periods()
     {
+        PayPeriod::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/pay-periods?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class PayPeriodTest extends Test
     /** @test */
     public function can_retrieve_all_pay_periods_for_select()
     {
+        PayPeriod::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/pay-periods?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class PayPeriodTest extends Test
     /** @test */
     public function can_retrieve_paginated_pay_periods()
     {
+        PayPeriod::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/pay-periods');
 
         $response->assertStatus(Response::HTTP_OK)

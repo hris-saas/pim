@@ -22,7 +22,9 @@ class ChangeReasonFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => [
+                'nl' => $this->faker->name,
+            ],
         ];
     }
 }

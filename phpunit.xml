@@ -46,10 +46,10 @@
   </logging>
   <php>
     <env name="APP_ENV" value="testing"/>
+    <env name="APP_DEBUG" value="true"/>
     <env name="APP_KEY" value="Phei9thoong3ai8aqu4ieHie6kee1zee"/>
-    <env name="DB_DATABASE" value="testing"/>
-    <env name="DB_PASSWORD" value="secret"/>
-    <env name="DB_USERNAME" value="homestead"/>
+    <env name="DB_CONNECTION" value="sqlite"/>
+    <env name="DB_DATABASE" value=":memory:"/>
     <env name="LIMIT_UUID_LENGTH_32" value="1"/>
     <env name="QUEUE_DRIVER" value="sync"/>
     <env name="TENANCY_DATABASE_AUTO_DELETE" value="1"/>

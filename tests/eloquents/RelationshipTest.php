@@ -24,8 +24,14 @@ class RelationshipTest extends Test
     }
 
     /** @test */
-    public function cannot_add_or_update_a_department_with_same_name()
+    public function cannot_add_or_update_a_relationship_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        Relationship::create($data);
+
         $response = $this->authApi('POST', 'api/relationships', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class RelationshipTest extends Test
     /** @test */
     public function can_retrieve_all_relationships()
     {
+        Relationship::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/relationships?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class RelationshipTest extends Test
     /** @test */
     public function can_retrieve_all_relationships_for_select()
     {
+        Relationship::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/relationships?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class RelationshipTest extends Test
     /** @test */
     public function can_retrieve_paginated_relationships()
     {
+        Relationship::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/relationships');
 
         $response->assertStatus(Response::HTTP_OK)

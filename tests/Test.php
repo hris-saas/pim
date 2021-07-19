@@ -4,9 +4,12 @@ namespace HRis\PIM\Tests;
 
 use HRis\Auth\Eloquent\User;
 use HRis\Core\Tests\Test as TestsCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class Test extends TestsCase
 {
+    use RefreshDatabase;
+
     /**
      * Service providers to load during this test.
      *

@@ -144,6 +144,7 @@ class EmployeeEmploymentStatusTest extends Test
     /** @test */
     public function can_get_employee_employment_status_related_models()
     {
+        $this->createUser();
         $employee = Employee::factory()->create();
 
         $employmentStatus = EmployeeEmploymentStatus::factory()->create([

@@ -3,12 +3,12 @@
 namespace HRis\PIM\Tests\Eloquents;
 
 use HRis\PIM\Tests\Test;
+use HRis\PIM\Eloquent\Address;
 use HRis\PIM\Eloquent\PayType;
 use HRis\PIM\Eloquent\Employee;
 use HRis\PIM\Eloquent\JobTitle;
 use HRis\PIM\Eloquent\Location;
 use HRis\PIM\Eloquent\PayPeriod;
-use HRis\PIM\Eloquent\Department;
 use HRis\PIM\Eloquent\ChangeReason;
 use HRis\PIM\Eloquent\MaritalStatus;
 use HRis\PIM\Eloquent\EmploymentStatus;
@@ -24,11 +24,11 @@ class EmployeeTest extends Test
             'last_name'            => $this->faker->lastName,
             'gender'               => 'm',
             'department_id'        => null,
-            'location_id'          => Location::first()->id,
-            'job_title_id'         => JobTitle::first()->id,
+            'location_id'          => Location::factory()->create()->id,
+            'job_title_id'         => JobTitle::factory()->create()->id,
             'is_active'            => true,
-            'marital_status_id'    => MaritalStatus::first()->id,
-            'employment_status_id' => EmploymentStatus::first()->id,
+            'marital_status_id'    => MaritalStatus::factory()->create()->id,
+            'employment_status_id' => EmploymentStatus::factory()->create()->id,
             'employee_no'          => $this->faker->word,
             'date_of_birth' => [
                 'day'   => rand(1, 31),
@@ -52,9 +52,9 @@ class EmployeeTest extends Test
             'pay_value'        => 1000,
             'pay_rate'         => 'year',
             'currency'         => 'usd',
-            'pay_type_id'      => PayType::first()->id,
-            'pay_period_id'    => PayPeriod::first()->id,
-            'change_reason_id' => ChangeReason::first()->id,
+            'pay_type_id'      => PayType::factory()->create()->id,
+            'pay_period_id'    => PayPeriod::factory()->create()->id,
+            'change_reason_id' => ChangeReason::factory()->create()->id,
             'is_ess_on'        => true,
         ];
 
@@ -161,6 +161,12 @@ class EmployeeTest extends Test
     /** @test */
     public function can_retrieve_all_employees()
     {
+        Employee::factory(5)->create();
+
+        foreach (range(0, 4) as $key => $item) {
+            Address::factory(5)->create(['employee_id' => $key + 1]);
+        }
+
         $response = $this->authApi('GET', 'api/employees?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -195,6 +201,12 @@ class EmployeeTest extends Test
     /** @test */
     public function can_retrieve_paginated_employees()
     {
+        Employee::factory(5)->create();
+
+        foreach (range(0, 4) as $key => $item) {
+            Address::factory(5)->create(['employee_id' => $key + 1]);
+        }
+
         $response = $this->authApi('GET', 'api/employees');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -411,6 +423,8 @@ class EmployeeTest extends Test
     /** @test */
     public function can_get_employee_for_directory()
     {
+        Employee::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/employees?isSelect&orderBy=last_name&groupBy=last_name');
 
         $response->assertStatus(200);
@@ -419,6 +433,8 @@ class EmployeeTest extends Test
     /** @test */
     public function can_get_all_employees_with_status()
     {
+        Employee::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/employees?status=1');
 
         $response->assertStatus(200);

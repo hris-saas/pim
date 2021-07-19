@@ -26,6 +26,12 @@ class DepartmentTest extends Test
     /** @test */
     public function cannot_add_or_update_a_department_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        Department::create($data);
+
         $response = $this->authApi('POST', 'api/departments', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class DepartmentTest extends Test
     /** @test */
     public function can_retrieve_all_departments()
     {
+        Department::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/departments?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class DepartmentTest extends Test
     /** @test */
     public function can_retrieve_all_departments_for_select()
     {
+        Department::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/departments?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class DepartmentTest extends Test
     /** @test */
     public function can_retrieve_paginated_departments()
     {
+        Department::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/departments');
 
         $response->assertStatus(Response::HTTP_OK)

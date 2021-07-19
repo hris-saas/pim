@@ -19,7 +19,7 @@ class Compensation extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'employee_id', 'effective_at', 'pay', 'rate', 'pay_type_id', 'pay_period_id', 'change_reason_id', 'comment', 'currency',];
+    protected $fillable = ['user_id', 'employee_id', 'effective_at', 'pay', 'rate', 'pay_type_id', 'pay_period_id', 'comment', 'currency'];
 
     /**
      * Create a new factory instance for the model.

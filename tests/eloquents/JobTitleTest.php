@@ -24,8 +24,14 @@ class JobTitleTest extends Test
     }
 
     /** @test */
-    public function cannot_add_or_update_a_department_with_same_name()
+    public function cannot_add_or_update_a_job_title_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        JobTitle::create($data);
+
         $response = $this->authApi('POST', 'api/job-titles', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class JobTitleTest extends Test
     /** @test */
     public function can_retrieve_all_job_titles()
     {
+        JobTitle::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/job-titles?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class JobTitleTest extends Test
     /** @test */
     public function can_retrieve_all_job_titles_for_select()
     {
+        JobTitle::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/job-titles?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class JobTitleTest extends Test
     /** @test */
     public function can_retrieve_paginated_job_titles()
     {
+        JobTitle::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/job-titles');
 
         $response->assertStatus(Response::HTTP_OK)

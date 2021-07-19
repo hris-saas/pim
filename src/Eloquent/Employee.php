@@ -249,8 +249,11 @@ class Employee extends Baum\Node
 
             // User, only if ESS is on
             if ($data['is_ess_on']) {
-                $user = Arr::only($data, ['name', 'email', 'password']);
-                $employee->user()->associate(User::create($user))->save();
+                $data = Arr::only($data, ['name', 'email', 'password']);
+
+                $user = User::create($data);
+
+                $employee->user()->associate($user)->save();
 
                 // TODO: send welcome email to user
             }

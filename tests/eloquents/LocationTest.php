@@ -24,8 +24,14 @@ class LocationTest extends Test
     }
 
     /** @test */
-    public function cannot_add_or_update_a_department_with_same_name()
+    public function cannot_add_or_update_a_location_with_same_name()
     {
+        $data = [
+            'name' => ['nl' => self::NAME],
+        ];
+
+        Location::create($data);
+
         $response = $this->authApi('POST', 'api/locations', self::NAME);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -76,6 +82,8 @@ class LocationTest extends Test
     /** @test */
     public function can_retrieve_all_locations()
     {
+        Location::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/locations?per_page=all');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -93,6 +101,8 @@ class LocationTest extends Test
     /** @test */
     public function can_retrieve_all_locations_for_select()
     {
+        Location::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/locations?isSelect');
 
         $response->assertStatus(Response::HTTP_OK)
@@ -109,6 +119,8 @@ class LocationTest extends Test
     /** @test */
     public function can_retrieve_paginated_locations()
     {
+        Location::factory(5)->create();
+
         $response = $this->authApi('GET', 'api/locations');
 
         $response->assertStatus(Response::HTTP_OK)
